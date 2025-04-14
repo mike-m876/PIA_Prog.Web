@@ -1,0 +1,30 @@
+/*Generales */
+.btn-primary img{
+    height: 30px;
+}
+
+/*Página principal */
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 400px;          
+    object-fit: cover;       
+}
+
+#carouselExampleIndicators {
+    width: 60%;              
+    margin: 0 auto;         
+}
+
+.carousel-control-prev-icon, 
+.carousel-control-next-icon {
+    filter: invert(100%);   
+}
+
+

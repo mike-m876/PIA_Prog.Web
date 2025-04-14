@@ -1,0 +1,14 @@
+/*Contacto */
+
+.Centrado {
+    text-align: center;
+}
+
+.blanco {
+    background-color: white;
+}
+
+.fondo-imagen {
+    background-image: url(../Imagenes/biblioteca.jpg);
+}
+

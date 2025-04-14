@@ -1,0 +1,25 @@
+/*Nosotros */
+.Historia {
+    text-align: center;
+    margin: auto;
+    color: white;
+ }
+
+.Desc {
+    margin: auto;
+    text-align: justify;
+    color: white;
+}
+
+.Justificado {
+    margin: auto;
+    text-align: justify;
+}
+
+.prim-fila {
+    background-image: url(../Imagenes/biblioteca.jpg);
+}
+
+.valores img{
+    max-width: 400px;
+}
