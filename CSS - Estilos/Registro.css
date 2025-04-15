@@ -1,0 +1,13 @@
+#mensaje {
+    display: none;
+}
+
+.invalid {
+    color: red;
+    list-style-type: "\2717";
+}
+
+.valid {
+    color: green;
+    list-style-type: "\2713";
+}

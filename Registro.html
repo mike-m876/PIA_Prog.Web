@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pantalla principal</title>
+        <link href="CSS - Estilos/bootstrap.css" rel="stylesheet">
+        <link href="CSS - Estilos/Estilos - Home.css" rel="stylesheet">
+        <link href="CSS - Estilos/Registro.css" rel="stylesheet"> 
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container d-flex justify-content-center">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav d-flex align-items-center">
+                        <li class="nav-item">
+                            <a href="Home.html">
+                                <img src="Imagenes/home-button.png" alt="Home" style="width: 40px; height: 40px;">
+                            </a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="Nosotros.html">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Registro.html">Registro</a></li>
+                        <li class="nav-item"><a class="nav-link" href="LOGIN.html">Iniciar Sesión</a></li>
+                        <li class="nav-item"><a class="nav-link" href="Oferta.html">Oferta Educativa</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container h-100">
+            <div class="row mt-4 justify-content-center h-100">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-header bg-primary text-white"> 
+                    <h1 class="h4 mb-0">Registro de usuario</h1> 
+                  </div>
+                  <div class="card-body">
+                    <form>
+                        <!--Matrícula-->
+                        <div class="form-group mt-4">
+                          <input type="text" id="name" placeholder="Nombre completo" class="form-control">
+                        </div>
+                        <!--TELÉFONO-->
+                        <div class="form-group mt-4">
+                          <input type="tel" id="cel" placeholder="Número telefónico" class="form-control">
+                        </div>
+                        <!--CURP-->
+                        <div class="form-group mt-4">
+                          <input type="text" id="curp" placeholder="CURP" class="form-control">
+                        </div>
+                        <!--Correo-->
+                        <div class="form-group mt-4">
+                          <input type="email" id="mail" placeholder="Correo electrónico" class="form-control">
+                        </div>
+                        <!--Contraseña-->
+                        <div class="form-group mt-4">
+                          <input type="password" id="psw" placeholder="Contraseña" class="form-control">
+                        </div>
+                        <!--Mensaje Requisitos-->
+                        <ul id="mensaje" class="mt-3">
+                            <li id="length" class="invalid">Contraseña de mínimo 12 caractéres</li>
+                            <li id="mayusc" class="invalid">Incluir mayúsculas</li>
+                            <li id="minusc" class="invalid">Incluir minúsculas</li>
+                            <li id="especial" class="invalid">Incluir mínimo un caracter especial</li>
+                        </ul>
+                        <input type="submit" class="btn btn-primary mt-3">
+                      </form>
+                  </div>
+                  <div class="card-footer text-end"> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+        <script src="JS/bootstrap.js"></script>
+        <script src="JS/Registro.js"></script>
+    </body>
+</html>
