@@ -11,6 +11,7 @@
     <link href="CSS - Estilos/Estilos - Home.css" rel="stylesheet">
 </head>
 <body>
+    <!--NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container d-flex justify-content-center"> <!-- Centrado -->
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -22,50 +23,53 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="Nosotros.html">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Registro.html">Registro</a></li>
                     <li class="nav-item"><a class="nav-link" href="LOGIN.html">Iniciar Sesión</a></li>
                     <li class="nav-item"><a class="nav-link" href="Oferta.html">Oferta Educativa</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!--Carrusel-->
-    <div class="row mt-4">
-        <div class="col-12 carousel-container"> 
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="Imagenes/edificio_home.jpg" class="d-block w-100" alt="Edificio">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="Imagenes/escuelita.jpeg" class="d-block w-100" alt="Escuelita">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="Imagenes/secundaria.jpeg" class="d-block w-100" alt="Secundaria">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+    <!--CARRUSEL-->
+    <div id="carouselExampleIndicators" class="carousel slide carousel_full" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="Imagenes/edificio_home.jpg" class="d-block w-100" alt="Edificio">
+            </div>
+            <div class="carousel-item">
+                <img src="Imagenes/escuelita.jpeg" class="d-block w-100" alt="Escuelita">
+            </div>
+            <div class="carousel-item">
+                <img src="Imagenes/secundaria.jpeg" class="d-block w-100" alt="Secundaria">
             </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div class="row mt-4">
-        <div class="col-12 text-center">
-            <h1>Colegio Miau</h1>
+    <div class="row footer_cont">
+        <div class="col-12 text-center mt-4 mb-4">
+          <h1 class="d-inline-block position-relative display-4">
+            <span><b>Colegio MIAU</b></span>
+            <small class="text-muted position-absolute footer">Est. 2025</small>
+          </h1>
         </div>
     </div>
-
-
+    <div class="row mt-2 mb-2">
+        <div class="col-12 text-center">
+            <p class="copyright">Copyright © 2024 Secundaria Miau. Derechos reservados</p>
+        </div>
+    </div>
     <!-- Scripts (jQuery no es necesario para Bootstrap 5) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

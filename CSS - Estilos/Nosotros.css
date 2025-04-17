@@ -18,8 +18,17 @@
 
 .prim-fila {
     background-image: url(../Imagenes/biblioteca.jpg);
+    opacity: .5;
 }
 
 .valores img{
     max-width: 400px;
+}
+
+.Centrado {
+    text-align: center;
+}
+
+.Centrado img {
+    max-height: 45px;
 }

@@ -6,9 +6,19 @@
 
 .blanco {
     background-color: white;
+    padding-bottom: 150px;
 }
 
 .fondo-imagen {
     background-image: url(../Imagenes/biblioteca.jpg);
 }
 
+.icono-viñetas {
+    width: 40px;
+    height: 40px;
+    background-color: aliceblue;
+}
+
+.puntos {
+    width: 250px;
+}
