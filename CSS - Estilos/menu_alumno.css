@@ -1,0 +1,16 @@
+body {
+    background-color: #f4f8fc;
+}
+.contenido-principal {
+    height: 80vh;
+}
+.btn-lg {
+    border-radius: 1rem;
+}
+.modal-content {
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.navbar .nav-link {
+    font-weight: 500;
+}
