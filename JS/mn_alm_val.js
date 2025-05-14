@@ -12,3 +12,13 @@ const form = document.getElementById('formCambiarContrasena');
                 alert('Contraseña actualizada correctamente.');
             }
         });
+
+// Cerrar sesión
+document.getElementById('btnCerrarSesion').addEventListener('click', function () {
+    // Limpia cualquier dato de sesión/localStorage
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // Redirige a la página de login
+    window.location.href = "LOGIN.html";
+});

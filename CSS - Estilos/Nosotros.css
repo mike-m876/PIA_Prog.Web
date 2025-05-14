@@ -1,14 +1,21 @@
 /*Nosotros */
+.Historia, .Desc {
+    position: relative;
+    z-index: 1;
+}
+
 .Historia {
     text-align: center;
     margin: auto;
     color: white;
- }
+    padding: 20px;
+}
 
 .Desc {
     margin: auto;
     text-align: justify;
     color: white;
+    padding: 20px;
 }
 
 .Justificado {
@@ -18,7 +25,24 @@
 
 .prim-fila {
     background-image: url(../Imagenes/biblioteca.jpg);
-    opacity: .5;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    min-height: 400px; 
+    position: relative; 
+    padding: 60px 0; 
+    overflow: hidden; 
+}
+
+.prim-fila::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 0;
 }
 
 .valores img{
@@ -32,3 +56,12 @@
 .Centrado img {
     max-height: 45px;
 }
+
+.card {
+    transition: transform 0.3s;
+    border: none;
+}
+.card:hover {
+    transform: translateY(-5px);
+}
+

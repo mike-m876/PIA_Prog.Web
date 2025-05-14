@@ -1,24 +1,64 @@
 /*Contacto */
-
 .Centrado {
     text-align: center;
 }
 
 .blanco {
     background-color: white;
-    padding-bottom: 150px;
+    padding: 40px 0;
+    border-radius: 10px; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+    margin-bottom: 50px;
 }
 
 .fondo-imagen {
     background-image: url(../Imagenes/biblioteca.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    padding-bottom: 50px;
 }
 
 .icono-viñetas {
-    width: 40px;
-    height: 40px;
-    background-color: aliceblue;
+    width: 50px;
+    height: 50px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);;
 }
 
 .puntos {
-    width: 250px;
+    width: 100%;
+    max-width: 400px; 
+    padding: 15px;
+    transition: transform 0.3s ease; 
+}
+
+.puntos:hover {
+    transform: translateY(-5px); 
+}
+
+h1 {
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+h6 {
+    color: #3498db;
+    font-weight: 600;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .blanco {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+    
+    .icono-viñetas {
+        width: 40px;
+        height: 40px;
+    }
 }
