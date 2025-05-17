@@ -20,5 +20,5 @@ document.getElementById('btnCerrarSesion').addEventListener('click', function ()
     sessionStorage.clear();
 
     // Redirige a la página de login
-    window.location.href = "LOGIN.html";
+    window.location.href = "LOGIN.php";
 });

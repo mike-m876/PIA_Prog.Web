@@ -18,7 +18,7 @@ btnBuscar.addEventListener('click', () => {
         return;
     }
 
-    fetch('crud_cal.php?action=leer&id_alumno=' + parseInt(matricula))
+    fetch('includes/calificaciones/crud_cal.php?action=leer&id_alumno=' + parseInt(matricula))
         .then(res => res.json())
         .then(data => {
             tabla.innerHTML = '';
@@ -31,23 +31,23 @@ btnBuscar.addEventListener('click', () => {
 
             infoAlumno.classList.remove('d-none');
             infoMatricula.textContent = data[0].id_alumno.toString().padStart(5, '0');
-            infoNombre.textContent = data[0].nombre_completo ? ? 'Nombre no disponible';
+            infoNombre.textContent = data[0].nombre_completo ? 'Nombre no disponible'
 
             idAlumnoGlobal = data[0].id_alumno;
             materiasAlumno = data;
 
             data.forEach(item => {
                 tabla.innerHTML += `
-          <tr>
-            <td>${item.nombre_materia}</td>
-            <td>${item.periodo1 ?? '-'}</td>
-            <td>${item.periodo2 ?? '-'}</td>
-            <td>${item.prom_final ?? '-'}</td>
-            <td><button class="btn btn-sm btn-warning btnEditar">Editar</button></td>
-          </tr>
-        `;
+                    <tr>
+                        <td>${item.nombre_materia}</td>
+                        <td>${item.periodo1 ?? '-'}</td>
+                        <td>${item.periodo2 ?? '-'}</td>
+                        <td>${item.prom_final ?? '-'}</td>
+                        <td><button class="btn btn-sm btn-warning btnEditar">Editar</button></td>
+                    </tr>
+                `;
             });
-            
+
             document.querySelectorAll('.btnEditar').forEach((btn, i) => {
                 btn.addEventListener('click', () => abrirModalEditar(i));
             });
@@ -67,24 +67,15 @@ function abrirModalEditar(index) {
 
     materiasAlumno.forEach(mat => {
         modalTablaMaterias.innerHTML += `
-      <tr>
-        <td>${mat.nombre_materia}</td>
-        <td>
-          <input type="number" min="0" max="100" step="1" class="form-control input-parcial1"
-            data-id_grupo="${mat.id_grupo}" data-id_materia="${mat.id_materia}"
-            value="${mat.periodo1 ?? ''}" />
-        </td>
-        <td>
-          <input type="number" min="0" max="100" step="1" class="form-control input-parcial2"
-            data-id_grupo="${mat.id_grupo}" data-id_materia="${mat.id_materia}"
-            value="${mat.periodo2 ?? ''}" />
-        </td>
-        <td class="promedio">${mat.prom_final ?? '-'}</td>
-      </tr>
-    `;
+            <tr>
+                <td>${mat.nombre_materia}</td>
+                <td><input type="number" min="0" max="100" step="1" class="form-control input-parcial1" data-id_grupo="${mat.id_grupo}" data-id_materia="${mat.id_materia}" value="${mat.periodo1 ?? ''}" /></td>
+                <td><input type="number" min="0" max="100" step="1" class="form-control input-parcial2" data-id_grupo="${mat.id_grupo}" data-id_materia="${mat.id_materia}" value="${mat.periodo2 ?? ''}" /></td>
+                <td class="promedio">${mat.prom_final ?? '-'}</td>
+            </tr>
+        `;
     });
 
-    // Función para actualizar promedio en vivo
     const inputsP1 = modalTablaMaterias.querySelectorAll('.input-parcial1');
     const inputsP2 = modalTablaMaterias.querySelectorAll('.input-parcial2');
 
@@ -93,7 +84,6 @@ function abrirModalEditar(index) {
             const p1 = parseInt(inputsP1[i].value);
             const p2 = parseInt(inputsP2[i].value);
             const celdaProm = inputsP1[i].closest('tr').querySelector('.promedio');
-
             if (!isNaN(p1) && !isNaN(p2)) {
                 celdaProm.textContent = Math.round((p1 + p2) / 2);
             } else {
@@ -138,14 +128,14 @@ formEditar.addEventListener('submit', (e) => {
         });
     }
 
-    fetch('crud_cal.php', {
+    fetch('includes/calificaciones/crud_cal.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 action: 'actualizar-multiples',
-                calificaciones: calificacionesActualizar
+                data: calificacionesActualizar //
             })
         })
         .then(res => res.json())
