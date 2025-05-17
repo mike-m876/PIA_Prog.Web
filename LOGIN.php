@@ -67,10 +67,10 @@ require_once 'includes/login/login_view.php';
                   <option value="maestro">Maestro</option>
                   <option value="administrador">Administrador</option>
                 </select>
-                <form action="PHP/" id="login_form">
+                <form action="includes/login/login.php" id="login_form">
                   <div class="form-group">
                     <label>Matrícula</label>
-                    <input type="email" placeholder="Ingrese su matrícula" class="form-control">
+                    <input type="text" placeholder="Ingrese su matrícula" class="form-control">
                   </div>
                   <div class="form-group mt-3">
                     <label>Contraseña</label>

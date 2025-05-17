@@ -47,7 +47,9 @@ if($_SERVER ["REQUEST_METHOD"] == "POST") {
         $_SESSION["user_id"] = $result["id_usuario"];
         $_SESSION["last_regeneration"] = time();
 
-        header("Location: ../Registro.php?signup=success");
+        require '../../menu_admin.php';
+
+        header("Location: includes");
         $pdo = null;
         $stmt = null;
         die();
