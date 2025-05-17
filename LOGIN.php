@@ -61,23 +61,29 @@ require_once 'includes/login/login_view.php';
                 <h1 class="h4 mb-0">Iniciar Sesión</h1> 
               </div>
               <div class="card-body">
-                <label for= "slc_rol" class="mb-3">Elegir rol de usuario: </label>
-                <select id="slc_rol" name="rol_lst" form="login_form">
-                  <option value="alumno">Alumno</option>
-                  <option value="maestro">Maestro</option>
-                  <option value="administrador">Administrador</option>
-                </select>
-                <form action="includes/login/login.php" id="login_form">
+                <form action="includes/login/login.php" id="login_form">    
+                  <!--SELECTOR DE ROl-->
+                  <label for= "slc_rol" class="mb-3">Elegir rol de usuario: </label>
+                  <select id="id_rol" name="id_rol" form="registro_form">
+                    <option value="" selected disabled>Elegir...</option>
+                    <?php foreach ($roles as $rol): ?>
+                        <option value="<?= htmlspecialchars((string)($rol['id_rol'] ?? '')) ?>">
+                            <?= htmlspecialchars((string)($rol['nombre'] ?? 'Sin nombre')) ?>
+                        </option>
+                    <?php endforeach; ?>
+                  </select>
+                  <!--INGRESO DE MATRÍCULA -->
                   <div class="form-group">
                     <label>Matrícula</label>
-                    <input type="text" placeholder="Ingrese su matrícula" class="form-control">
+                    <input type="text" placeholder="Ingrese su matrícula" class="form-control" name="matricula">
                   </div>
+                  <!-- INGRESO DE CONTRASEÑA-->
                   <div class="form-group mt-3">
                     <label>Contraseña</label>
-                    <input type="password" placeholder="Ingrese su contraseña" class="form-control">
+                    <input type="password" placeholder="Ingrese su contraseña" class="form-control" name="psswd">
                   </div>
                   <?php check_login_errors(); ?>
-                  <input type="submit" class="btn btn-primary mt-3">
+                  <input type="submit" class="btn btn-primary mt-3" name="login_button">
                 </form>
               </div>
               <div class="card-footer text-end"> 
