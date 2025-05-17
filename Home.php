@@ -26,19 +26,19 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link" href="Nosotros.html">Nosotros</a>
+                <a class="nav-link" href="Nosotros.php">Nosotros</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="Contacto.html">Contacto</a>
+                <a class="nav-link" href="Contacto.php">Contacto</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="Registro.html">Registro</a>
+                <a class="nav-link" href="Registro.php">Registro</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="LOGIN.html">Iniciar Sesión</a>
+                <a class="nav-link" href="LOGIN.php">Iniciar Sesión</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="Oferta.html">Oferta Educativa</a>
+                <a class="nav-link" href="Oferta.php">Oferta Educativa</a>
                 </li>
             </ul>
             </div>
