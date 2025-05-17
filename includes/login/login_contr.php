@@ -1,15 +1,15 @@
 <?php
 
-function is_input_empty($id_usuario, $password, $id_rol) {
-    if(empty($id_usuario) || empty($password) || empty($id_rol)) {
+function is_input_empty($matricula, $password, $id_rol) {
+    if(empty($matricula) || empty($password) || empty($id_rol)) {
         return true;
     } else {
         return false;
     }
 }
-
+ 
 function is_matricula_wrong(bool|array $result) {
-    if (!result) {
+    if (!$result) {
         return true;
     } else {
         return false;

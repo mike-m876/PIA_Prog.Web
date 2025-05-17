@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+include 'includes/registro/registro_view.php';
+include 'includes/registro/registro_model.php';
+include 'includes/dbh.php';
+$roles = get_roles($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -52,33 +63,48 @@
                     <h1 class="h4 mb-0">Solicitud de registro de usuario</h1> 
                   </div>
                   <div class="card-body">
-                    <!--SELECTOR DE ROl-->
-                    <label for= "slc_rol" class="mb-3">Elegir rol de usuario: </label>
-                    <select id="slc_rol" name="rol_lst" form="registro_form">
-                      <option value="alumno">Alumno</option>
-                      <option value="maestro">Maestro</option>
-                      <option value="administrador">Administrador</option>
-                    </select>
-                    <form action="PHP/Registro.php" method="POST" method="GET" id="registro_form">
-                      <!--NOMBRE COMPLETO-->
+                    <form action="includes/registro/registro.php" method="POST" id="registro_form">
+                      <!--SELECTOR DE ROl-->
+                      <label for= "slc_rol" class="mb-3">Elegir rol de usuario: </label>
+                      <select id="id_rol" name="id_rol" form="registro_form">
+                        <option value="" selected disabled>Elegir...</option>
+                        <?php foreach ($roles as $rol): ?>
+                            <option value="<?= htmlspecialchars((string)($rol['id_rol'] ?? '')) ?>">
+                                <?= htmlspecialchars((string)($rol['nombre'] ?? 'Sin nombre')) ?>
+                            </option>
+                        <?php endforeach; ?>
+                      </select>
+                      <!--NOMBRE(S)-->
                       <div class="form-group mt-2">
-                        <input type="text" id="name" placeholder="Nombre completo" class="form-control" name="name">
+                        <input type="text" id="name" placeholder="Nombre(s)" class="form-control" name="nombre">
                       </div>
-                      <!--TELÉFONO-->
-                      <div class="form-group mt-4">
-                        <input type="tel" id="cel" placeholder="Número telefónico" class="form-control" name="cel">
+                      <div class="row">
+                        <!-- APELLIDO PATERNO -->
+                        <div class="form-group col-md-6 mt-2">
+                          <input type="text" id="apellido_pat" placeholder="Apellido Paterno" class="form-control" name="apellido_pat">
+                        </div>
+                        <!-- APELLIDO MATERNO -->
+                        <div class="form-group col-md-6 mt-2">
+                          <input type="text" id="apellido_mat" placeholder="Apellido Materno" class="form-control" name="apellido_mat">
+                        </div>
                       </div>
-                      <!--CURP-->
-                      <div class="form-group mt-4">
-                        <input type="text" id="curp" placeholder="CURP" class="form-control" name="CURP">
+                      <div class="row">
+                        <!--TELÉFONO-->
+                        <div class="form-group col-md-6 mt-2">
+                          <input type="tel" id="cel" placeholder="Número telefónico" class="form-control" name="telefono">
+                        </div>
+                        <!--CURP-->
+                        <div class="form-group col-md-6 mt-2">
+                          <input type="text" id="curp" placeholder="CURP" class="form-control" name="curp">
+                          <p id="mensaje_curp" class="mt-3 mb-0">Escribir en <b>Mayúsculas</b></p>
+                        </div>
                       </div>
-                      <p id = "mensaje_curp" class="mt-3">Escribir en <b>Mayúsculas</b></p>
                       <!--Correo-->
-                      <div class="form-group mt-4">
+                      <div class="form-group mt-2">
                         <input type="email" id="email" placeholder="Correo electrónico" class="form-control" name="email">
                       </div>
                       <!--Contraseña-->
-                      <div class="form-group mt-4">
+                      <div class="form-group mt-2">
                         <input type="password" id="psw" placeholder="Contraseña" class="form-control" name="password">
                       </div>
                       <!--Mensaje Requisitos-->
@@ -88,6 +114,7 @@
                           <li id="minusc" class="invalid">Incluir minúsculas</li>
                           <li id="especial" class="invalid">Incluir mínimo un caracter especial</li>
                       </ul>
+                      <?php check_registro_error(); ?>
                       <input type="submit" class="btn btn-primary mt-3" disabled id="reg_button">
                     </form>
                   </div>

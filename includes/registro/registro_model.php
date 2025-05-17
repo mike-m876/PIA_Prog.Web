@@ -15,6 +15,11 @@ function get_curp(object $pdo, string $curp)
     return $result;
 }
 
+function get_roles(PDO $pdo): array {
+    $stmt = $pdo->query("SELECT id_rol, nombre FROM roles;");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function is_valid_rol(object $pdo, int $id_rol){
     $query = "SELECT COUNT(*) FROM roles WHERE id_rol = :id_rol;";
     $stmt = $pdo->prepare($query);

@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once 'includes/config.php';
+require_once 'includes/login/login_view.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -70,6 +76,7 @@
                     <label>Contraseña</label>
                     <input type="password" placeholder="Ingrese su contraseña" class="form-control">
                   </div>
+                  <?php check_login_errors(); ?>
                   <input type="submit" class="btn btn-primary mt-3">
                 </form>
               </div>

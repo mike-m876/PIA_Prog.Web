@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+session_start();
+
 require_once __DIR__ . '/../dbh.php';
 require 'registro_model.php';
 require 'registro_view.php';
@@ -34,6 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors["curp_used"] = "CURP ya registrada";
     }
     
+    if (is_email_invalid($email)) {
+        $errors["invalid_email"] = "Correo electrónico inválido";
+    }
+
     if(!is_valid_rol($pdo, $id_rol)){
         $errors["invalid_role"] = "Rol inválido";
     }
@@ -49,9 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $telefono, $email, $password, $id_rol);    
     $pdo = null;
     $stmt = null;
-    header("location: ../../login.php");        
+    header("Location: /PIA_Prog.Web/login.php");
     die();
 } else {
-    header("Location: ../../Home.html");
+    header("Location: /PIA_Prog.Web/Registro.php");
     exit;
 }
