@@ -61,6 +61,18 @@ ul li:before {
     transform: scale(1.02);
 }
 
+/* --- Corregir navbar --- */
+.navbar-nav li {
+    list-style: none;
+}
+
+.navbar-nav li:before {
+    content: none !important;
+}
+
+.list-unstyled {
+    padding-left: 25px;
+}
 /* Responsividad */
 @media (max-width: 768px) {
     .row {
