@@ -2,11 +2,11 @@
 
 session_start();
 
-if($_SERVER ["REQUEST_METHOD"] == "POST") {
+if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
     //DECLARACIÓN DE VARIABLES
     $id_rol = (int) $_POST["id_rol"];
     $matricula = (int) $_POST["matricula"];
-    $password = $_POST["password"];
+    $psswd = $_POST["psswd"];
 
     try {
         require_once 'dbh.php';
@@ -21,13 +21,17 @@ if($_SERVER ["REQUEST_METHOD"] == "POST") {
             $errors["empty_input"] = "Todos los campos deben ser llenados"; 
         }
 
-        $result = get_user($pdo, $matricula);
+        $user = get_user($pdo, $matricula, $id_rol);
         
-        if (is_matricula_wrong($result)) {
+        
+        if (is_matricula_wrong($user)) {
             $errors["mat_wrong"] = "Matrícula incorrecta";
-        } else if(is_psswd_wrong($psswd, $result["psswd_hash"])){
+        } else if(is_psswd_wrong($psswd, $user["psswd_hash"])){
             $errors["psswd_wrong"] = "Contraseña incorrecta";
-        }
+        } else if(is_rol_wrong($user['id_rol'], $id_rol)){
+            $errors["rol_wrong"] = "Rol incorrecto";
+        };
+
         require_once '../config.php';
 
         //GUARDADO E IMPRESIóN DE ERRORES
@@ -39,15 +43,30 @@ if($_SERVER ["REQUEST_METHOD"] == "POST") {
         }
 
         //SUPONIENDO NINGÚN ERROR
-        $new_session_id = session_create_id();
-        $session_id = $new_session_id . "_" . $result["id_usuario"];
+        $new_session_id = session_create_id(true);
+        $session_id = $new_session_id . "_" . $user["id_usuario"];
         session_id($session_id);
 
-        $_SESSION["nom_usuario"] = htmlspecialchars($result["nom_usuario"]);
-        $_SESSION["user_id"] = $result["id_usuario"];
+        $_SESSION["nom_usuario"] = htmlspecialchars($user["nom_usuario"] ?? '');
+        $_SESSION["user_id"] = $user["id_usuario"];
         $_SESSION["last_regeneration"] = time();
 
-        header("Location: ../Registro.php?signup=success");
+        //DIRECCIÓN A MENÚS
+        switch ($id_rol) {
+            case 1:
+                header("Location: ../../menu_alumno.php");
+                break;
+            case 2:
+                header("Location: ../../menu_maestro.php");
+                break;
+            case 3:
+                header("Location: ../../menu_admin.php");
+                break;
+            default:
+                header("Location: ../../login.php");
+                break;
+        }
+
         $pdo = null;
         $stmt = null;
         die();
