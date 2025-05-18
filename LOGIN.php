@@ -1,7 +1,10 @@
 <?php
 session_start();
 require_once 'includes/config.php';
+require_once 'includes/dbh.php';
 require_once 'includes/login/login_view.php';
+require_once 'includes/login/login_model.php';
+$roles = get_roles($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -61,13 +64,13 @@ require_once 'includes/login/login_view.php';
                 <h1 class="h4 mb-0">Iniciar Sesión</h1> 
               </div>
               <div class="card-body">
-                <form action="includes/login/login.php" id="login_form">    
+                <form action="includes/login/login.php" id="login_form" method="POST">    
                   <!--SELECTOR DE ROl-->
-                  <label for= "slc_rol" class="mb-3">Elegir rol de usuario: </label>
-                  <select id="id_rol" name="id_rol" form="registro_form">
+                  <label for= "id_rol" class="mb-3">Elegir rol de usuario: </label>
+                  <select id="id_rol" name="id_rol">
                     <option value="" selected disabled>Elegir...</option>
                     <?php foreach ($roles as $rol): ?>
-                        <option value="<?= htmlspecialchars((string)($rol['id_rol'] ?? '')) ?>">
+                        <option value="<?= htmlspecialchars((int)($rol['id_rol'] ?? '')) ?>">
                             <?= htmlspecialchars((string)($rol['nombre'] ?? 'Sin nombre')) ?>
                         </option>
                     <?php endforeach; ?>
@@ -94,5 +97,6 @@ require_once 'includes/login/login_view.php';
       </div>
 
     <script src="JS/bootstrap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

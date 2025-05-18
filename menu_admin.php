@@ -37,7 +37,7 @@
     <div class="botones-grid">
         <!-- Botón de Gestión de Usuarios -->
         <div class="boton-admin">
-            <a href="#" class="btn btn-outline-danger btn-lg">
+            <a href="crud_usuarios.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-people-fill fs-1 d-block mb-2"></i>
                 Gestión de Usuarios
             </a>
@@ -45,7 +45,7 @@
     
         <!-- Botón de Carga de Calificaciones -->
         <div class="boton-admin">
-            <a href="#" class="btn btn-outline-danger btn-lg">
+            <a href="crud_calificaciones.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-journal-check fs-1 d-block mb-2"></i>
                 Calificaciones
             </a>

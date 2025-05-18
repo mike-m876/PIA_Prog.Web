@@ -9,7 +9,7 @@ if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
     $psswd = $_POST["psswd"];
 
     try {
-        require_once 'dbh.php';
+        require_once '../dbh.php';
         require 'login_model.php';
         require 'login_view.php';
         require 'Login_contr.php';
@@ -17,20 +17,21 @@ if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
         //MANEJO DE ERRORES
         $errors = [];
 
-        if (is_input_empty($matricula, $password, $id_rol)) {
+        if (is_input_empty($matricula, $psswd, $id_rol)) {
             $errors["empty_input"] = "Todos los campos deben ser llenados"; 
         }
 
         $user = get_user($pdo, $matricula, $id_rol);
-        
+
+       // var_dump($id_rol);
+       // var_dump($user);
+        //die();
         
         if (is_matricula_wrong($user)) {
-            $errors["mat_wrong"] = "Matrícula incorrecta";
-        } else if(is_psswd_wrong($psswd, $user["psswd_hash"])){
-            $errors["psswd_wrong"] = "Contraseña incorrecta";
-        } else if(is_rol_wrong($user['id_rol'], $id_rol)){
-            $errors["rol_wrong"] = "Rol incorrecto";
-        };
+            $errors["login_error"] = "Credenciales incorrectas";
+        } else if (is_psswd_wrong($psswd, $user["psswd_hash"])) {
+            $errors["login_error"] = "Credenciales incorrectas";
+        }
 
         require_once '../config.php';
 
@@ -74,6 +75,6 @@ if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
         die("Query failed: " . $e->getMessage());
     }
 } else {
-    header("Location: ../Home.html");
+    header("Location: ../../Home.php");
     exit;
 }

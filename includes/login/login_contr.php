@@ -1,7 +1,7 @@
 <?php
 
-function is_input_empty($matricula, $password, $id_rol) {
-    if(empty($matricula) || empty($password) || empty($id_rol)) {
+function is_input_empty($matricula, $psswd, $id_rol) {
+    if(empty($matricula) || empty($psswd) || empty($id_rol)) {
         return true;
     } else {
         return false;
@@ -23,11 +23,3 @@ function is_psswd_wrong(string $psswd, string $hashed_password) {
         return true;
     }
 } 
-
-function is_rol_wrong( $user, $id_rol){
-    if ($user['id_rol'] != $id_rol) {
-        return true;
-    } else {
-        return false;
-    }
-}
