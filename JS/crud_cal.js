@@ -31,7 +31,7 @@ btnBuscar.addEventListener('click', () => {
 
             infoAlumno.classList.remove('d-none');
             infoMatricula.textContent = data[0].id_alumno.toString().padStart(5, '0');
-            infoNombre.textContent = data[0].nombre_completo ? 'Nombre no disponible'
+            infoNombre.textContent = data[0].nombre_completo ? 'Nombre no disponible?';
 
             idAlumnoGlobal = data[0].id_alumno;
             materiasAlumno = data;
