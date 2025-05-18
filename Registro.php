@@ -3,8 +3,8 @@ session_start();
 include 'includes/registro/registro_view.php';
 include 'includes/registro/registro_model.php';
 include 'includes/dbh.php';
-$roles = get_roles($pdo);
 
+$roles = get_roles($pdo);
 ?>
 
 <!DOCTYPE html>

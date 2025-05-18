@@ -3,7 +3,7 @@
 declare (strict_types= 1);
 
 function get_user(object $pdo, int $matricula, int $id_rol) {
-    $query = "SELECT * FROM usuarios WHERE id_usuario = :matricula AND id_rol = :id_rol";
+    $query = "SELECT * FROM usuarios WHERE id_usuario = :matricula AND id_rol = :id_rol AND id_estado = 2 AND activo = 1";
     $stmt  = $pdo->prepare($query);
     $stmt-> bindParam(":matricula", $matricula);
     $stmt ->bindParam(":id_rol", $id_rol);

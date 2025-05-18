@@ -22,10 +22,6 @@ if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
         }
 
         $user = get_user($pdo, $matricula, $id_rol);
-
-       // var_dump($id_rol);
-       // var_dump($user);
-        //die();
         
         if (is_matricula_wrong($user)) {
             $errors["login_error"] = "Credenciales incorrectas";

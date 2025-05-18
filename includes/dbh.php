@@ -1,6 +1,6 @@
 <?php 
 
-$host = 'localhost';
+$host = '127.0.0.1';
 $dbname = 'col_miau';
 $dbusername = 'root';
 $dbpassword = '123';
