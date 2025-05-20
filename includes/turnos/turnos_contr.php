@@ -15,3 +15,8 @@ function is_turno_registered(PDO $pdo, $nombre){
         return false;
     }
 }
+
+function has_invalid_chars(string $nombre): bool
+{
+    return !preg_match('/^[a-zA-Z0-9\s]+$/', $nombre);
+}
