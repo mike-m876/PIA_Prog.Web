@@ -32,6 +32,15 @@ function is_curp_registered (object $pdo, string $curp)
         return false;
     }
 }
+function is_curp_valid($curp){
+    if (!preg_match('/^[A-Z]{4}\d{6}[HM][A-Z]{2}[A-Z]{3}[A-Z\d]{2}$/', strtoupper($curp))) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 
 function create_user(
     object $pdo, string $curp, string $nombres, 
