@@ -18,7 +18,7 @@
     <!--NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="Home.html">
+            <a class="navbar-brand" href="Home.php">
             <img src="Imagenes/home-button.png" alt="Home" style="width: 40px; height: 40px;">
             </a>
 
@@ -80,7 +80,7 @@
                 <div class="card border-0 shadow-sm h-100">
                     <img src="Imagenes/prog_educativo.png" class="card-img-top" alt="Programa Educativo">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Nuestro Programa Educativo</h5>
+                        <h5 class="card-title text-center">Nuestros Programas Extracurriculares</h5>
                         <p class="card-text text-center text-muted">Conoce nuestro plan de estudios diseñado para el desarrollo integral de nuestros estudiantes.</p>
                     </div>
                 </div>
@@ -89,16 +89,14 @@
         <div class="row mt-3">
             <div class="col-5 seg-fila">
                 <h3>Objetivo</h3>
-                <p class="Desc">"Formar estudiantes integrales, mediante una educación de calidad que desarrolle sus competencias académicas,
-                habilidades socioemocionales y valores éticos, preparándolos para el acceso a la educación superior, la vida laboral y
-                una participación activa en la sociedad."</p>
+                <p class="Desc">"Formar estudiantes activos, que desarrollen sus habilidades creativas, deportivas, cívicas y de trabajo en equipo, promoviendo los buenos valores a través de la actividad física e intelectual."</p>
                 <h3>Actividades Complementarias</h3>
                 <div class="Desc">
                     <ul>
-                        <li>Actividades Deportivas</li>
-                        <li>Arte y cultura(música, teatro, danza)</li>
-                        <li>Talleres de programación</li>
-                        <li>Programas de voluntariado comunitario</li>
+                        <li>Torneos Intraescolares</li>
+                        <li>Competencias de Matemáticas y Física</li>
+                        <li>Proyectos de Robótica con Lego</li>
+                        <li>Programas de intercambio internacional</li>
                     </ul>
                 </div>
             </div>

@@ -17,7 +17,7 @@
     <!--NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="Home.html">
+            <a class="navbar-brand" href="Home.php">
             <img src="Imagenes/home-button.png" alt="Home" style="width: 40px; height: 40px;">
             </a>
 
