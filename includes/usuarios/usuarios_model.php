@@ -19,7 +19,9 @@ function get_usuario(PDO $pdo){
               JOIN
                 roles r ON u.id_rol = r.id_rol
               JOIN
-                estado e on u.id_estado = e.id_estado;";
+                estado e on u.id_estado = e.id_estado
+              WHERE 
+                u.id_usuario > 1;";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -37,9 +39,9 @@ function get_user_by_id($pdo, $matricula){
    FROM usuarios where id_usuario = :matricula;";
 
   $stmt = $pdo->prepare($query);
-  $stmt->bindParam('matricula', $matricula);
+  $stmt->bindParam('matricula', $matricula, PDO::PARAM_INT);
   $stmt->execute();
-  return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return  $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 //INSERCIÓN DE DATOS

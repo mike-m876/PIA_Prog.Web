@@ -1,3 +1,11 @@
+<?php
+
+require_once 'includes/config.php';
+require_login();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,15 +29,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="menuAlumno">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContrasena">Cambiar
-                            Contraseña</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">Cerrar Sesión</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -45,7 +44,7 @@
     
         <!-- Botón de Carga de Calificaciones -->
         <div class="boton-admin">
-            <a href="crud_calificaciones.php" class="btn btn-outline-danger btn-lg">
+            <a href="crud_calificaciones_generales.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-journal-check fs-1 d-block mb-2"></i>
                 Calificaciones
             </a>
@@ -53,7 +52,7 @@
     
         <!-- Botón de Materias -->
         <div class="boton-admin">
-            <a href="#" class="btn btn-outline-danger btn-lg">
+            <a href="crud_materias.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-book fs-1 d-block mb-2"></i>
                 Materias
             </a>
@@ -61,7 +60,7 @@
     
         <!-- Botón de Grupos -->
         <div class="boton-admin">
-            <a href="#" class="btn btn-outline-danger btn-lg">
+            <a href="crud_grupos.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-collection fs-1 d-block mb-2"></i>
                 Grupos
             </a>
@@ -77,7 +76,7 @@
     
         <!-- Botón de Reporte Estadístico -->
         <div class="boton-admin">
-            <a href="#" class="btn btn-outline-danger btn-lg">
+            <a href="Reportes.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-graph-up fs-1 d-block mb-2"></i>
                 Reporte Estadístico
             </a>

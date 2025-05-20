@@ -1,5 +1,8 @@
 <?php
 
+require_once 'includes/config.php';
+require_login();
+
 include 'includes/usuarios/usuarios_view.php';
 include 'includes/usuarios/usuarios_model.php';
 include 'includes/dbh.php';
@@ -67,7 +70,7 @@ $estados = get_estados($pdo);
             <div class="modal-body">
                 <form id="formEditarUsuario" action="includes/usuarios/usuarios.php" method="POST">
                     <input type="hidden" name="matricula" id="matricula" value="">
-                    <label for="id_estado" class="form-label">ID Usuario</label>
+                    <label for="id_estado" class="form-label">Estado del usuario</label>
                     <select id="id_estado" name="id_estado" class="form-select" required>
                         <option value="" selected disabled>Seleccionar estado...</option>
                         <?php foreach ($estados as $estado): ?>
@@ -76,7 +79,7 @@ $estados = get_estados($pdo);
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <label for="activo" class="form-label">Estado</label>
+                    <label for="activo" class="form-label">Activar/Desactivar usuario</label>
                     <select id="activo" name="activo" class="form-select" required>
                         <option value="1">Activo</option>
                         <option value="0">Inactivo</option>
@@ -93,7 +96,7 @@ $estados = get_estados($pdo);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/crud_cal.js"></script>
     <script>
-        function fill_modal_editar(matricula){
+        function fill_editar_usuario(matricula){
             document.getElementById("matricula").value = matricula;
         }
     </script>

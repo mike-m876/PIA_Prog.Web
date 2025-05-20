@@ -23,12 +23,3 @@ function is_psswd_wrong(string $psswd, string $hashed_password) {
         return true;
     }
 }
-
-function is_user_inactive(array $user): bool {
-    if(isset($user['activo'])&& $user['activo'] == 0){
-        return true;
-    }
-    else{
-        return false;
-    }
-}

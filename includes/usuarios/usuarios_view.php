@@ -18,7 +18,7 @@ function new_row(array $result){
                     name="edit_user" 
                     data-bs-toggle="modal"  
                     data-bs-target="#modal_editar"
-                    onclick="fill_modal_editar( 
+                    onclick="fill_editar_usuario( 
                         '<?= htmlspecialchars(strval($row['id_usuario'] ?? '')) ?>')">  
                 <i class="bi bi-pencil-fill"></i>
             </button>

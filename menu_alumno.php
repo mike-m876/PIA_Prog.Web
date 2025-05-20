@@ -1,3 +1,10 @@
+<?php
+
+require_once 'includes/config.php';
+require_login();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -13,36 +20,22 @@
 
 <body>
 
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <a class="navbar-brand" href="#">Alumno</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAlumno">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="menuAlumno">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContrasena">Cambiar
-                            Contraseña</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-danger" href="#">Cerrar Sesión</a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </nav>
 
-    <!-- Botón de calificaciones -->
     <div class="contenido-principal d-flex justify-content-center align-items-center">
-        <a href="#" class="btn btn-outline-primary btn-lg px-5 py-4 text-center">
+        <a href="calificaciones_alumnos.php" class="btn btn-outline-primary btn-lg px-5 py-4 text-center">
             <i class="bi bi-journal-check fs-1 d-block mb-2"></i>
             Calificaciones
         </a>
     </div>
 
-    <!-- Modal Cambiar Contraseña -->
     <div class="modal fade" id="modalContrasena" tabindex="-1" aria-labelledby="modalContrasenaLabel"
         aria-hidden="true">
         <div class="modal-dialog">

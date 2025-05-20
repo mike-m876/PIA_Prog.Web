@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
     //DECLARACIÓN DE VARIABLES
@@ -17,16 +16,13 @@ if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
         //MANEJO DE ERRORES
         $errors = [];
 
-        if (is_user_inactive($user)){
-            $error['invalid_user'] = "El usuario no se encuentra activo";
-        }
-
         if (is_input_empty($matricula, $psswd, $id_rol)) {
             $errors["empty_input"] = "Todos los campos deben ser llenados"; 
         }
 
         $user = get_user($pdo, $matricula, $id_rol);
         
+
         if (is_matricula_wrong($user)) {
             $errors["login_error"] = "Credenciales incorrectas";
         } else if (is_psswd_wrong($psswd, $user["psswd_hash"])) {

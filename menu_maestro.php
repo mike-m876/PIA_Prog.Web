@@ -1,3 +1,11 @@
+<?php
+
+require_once 'includes/config.php';
+require_login();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,22 +22,13 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">Maestro</a>
-            <div class="collapse navbar-collapse" id="menuMaestro">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modalContrasena">Cambiar
-                            Contraseña</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-danger" href="#" id="btnCerrarSesion">Cerrar Sesión</a>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse" id="menuMaestro"> 
             </div>
         </div>
     </nav>
 
     <div class="contenido-principal d-flex justify-content-center align-items-center">
-        <a href="subir_calificaciones.html" class="btn btn-outline-success btn-lg px-5 py-4 text-center">
+        <a href="crud_calificaciones_generales.php" class="btn btn-outline-success btn-lg px-5 py-4 text-center">
             <i class="bi bi-upload fs-1 d-block mb-2"></i>
             Subir Calificaciones
         </a>
