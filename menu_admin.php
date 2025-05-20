@@ -102,11 +102,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="nueva" class="form-label">Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="nueva" required minlength="6">
+                            <input type="password" class="form-control" id="nueva" required minlength="12">
                         </div>
                         <div class="mb-3">
                             <label for="confirmar" class="form-label">Confirmar Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="confirmar" required minlength="6">
+                            <input type="password" class="form-control" id="confirmar" required minlength="12">
                             <div class="invalid-feedback">Las contraseñas no coinciden.</div>
                         </div>
                     </div>

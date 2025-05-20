@@ -34,7 +34,7 @@
         </div>
     </nav>
 
-    <!-- Botón central de calificaciones -->
+    <!-- Botón de calificaciones -->
     <div class="contenido-principal d-flex justify-content-center align-items-center">
         <a href="#" class="btn btn-outline-primary btn-lg px-5 py-4 text-center">
             <i class="bi bi-journal-check fs-1 d-block mb-2"></i>
@@ -61,11 +61,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="nueva" class="form-label">Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="nueva" required minlength="6">
+                            <input type="password" class="form-control" id="nueva" required minlength="12">
                         </div>
                         <div class="mb-3">
                             <label for="confirmar" class="form-label">Confirmar Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="confirmar" required minlength="6">
+                            <input type="password" class="form-control" id="confirmar" required minlength="12">
                             <div class="invalid-feedback">Las contraseñas no coinciden.</div>
                         </div>
                     </div>

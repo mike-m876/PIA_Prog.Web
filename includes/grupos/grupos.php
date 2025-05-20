@@ -1,10 +1,23 @@
 <?php
 header('Content-Type: application/json');
 require_once '../dbh.php';
+include 'grupos_model.php';
 
+$result = get_grupo($pdo);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['filtrar_grupo'])) {
+    $id_grupo = (int) $_POST['grupo'];
+    $id_nivel = (int) $_POST['nivel'];
+    $id_aula = (int) $_POST['aula'];
+    $id_ciclo = (int) $_POST['ciclo'];
+    $id_turno = (int) $_POST['turno'];
+    $id_maestro = (int) $_POST['maestro'];
+
+    $errors = [];
+
+    //filtrar_grupo();
+}
 try {
-    $pdo = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PASS);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $action = $_GET['action'] ?? '';
 
