@@ -32,6 +32,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['nuevo_turno'])){
         die();
     }
 
+    if(has_invalid_chars($nombre)){
+        $errors[] = "El nombre contiene inválidos";
+    }
+
     //SUPONIENDO NINGÚN ERROR
     nuevo_turno($pdo, $nombre);
     $pdo = null;
