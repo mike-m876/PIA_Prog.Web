@@ -17,6 +17,10 @@ if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
         //MANEJO DE ERRORES
         $errors = [];
 
+        if (is_user_inactive($user)){
+            $error['invalid_user'] = "El usuario no se encuentra activo";
+        }
+
         if (is_input_empty($matricula, $psswd, $id_rol)) {
             $errors["empty_input"] = "Todos los campos deben ser llenados"; 
         }

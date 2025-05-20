@@ -35,7 +35,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (is_curp_registered($pdo, $curp)) {
         $errors["curp_used"] = "CURP ya registrada";
     }
-    
+    if (is_curp_valid($curp)) {
+        $errors["invalid_curp"] = "El CURP no tiene un formato válido.";
+    }
     if (is_email_invalid($email)) {
         $errors["invalid_email"] = "Correo electrónico inválido";
     }
