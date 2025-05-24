@@ -1,4 +1,8 @@
 <?php
+
+require_once 'includes/config.php';
+require_login();
+
 include 'includes/dbh.php';
 include 'includes/califs_gen/califs_gen_model.php';
 include 'includes/califs_gen/califs_gen_view.php';

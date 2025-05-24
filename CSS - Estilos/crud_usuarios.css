@@ -1,0 +1,7 @@
+.pagination a{
+    margin: 0 8px;
+}
+
+.pagination {
+    justify-content: center;
+}

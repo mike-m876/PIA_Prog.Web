@@ -19,12 +19,19 @@ require_login();
 </head>
 
 <body>
-
+        <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- IZQUIERDA -->
             <a class="navbar-brand" href="#">Alumno</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAlumno">
-                <span class="navbar-toggler-icon"></span>
+            <!-- CENTRO -->
+            <div class="text-center">
+                <strong><?= htmlspecialchars($_SESSION['nom_usuario']) ?></strong><br>
+                <small>Matrícula:  <?= htmlspecialchars($_SESSION["matricula"]) ?></small>
+            </div>
+            <!-- DERECHA -->
+            <button class="btn btn-light">
+                <i class="bi bi-key"></i> ¿Olvidaste tu contraseña?
             </button>
         </div>
     </nav>

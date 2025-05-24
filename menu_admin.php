@@ -1,7 +1,7 @@
 <?php
-
 require_once 'includes/config.php';
 require_login();
+require_role(3)
 
 ?>
 
@@ -22,16 +22,24 @@ require_login();
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger"> 
-        <div class="container">
+    <nav class="navbar navbar-dark bg-danger">
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- IZQUIERDA -->
             <a class="navbar-brand" href="#">Administrador</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuAlumno">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menuAlumno">
+            <!-- CENTRO -->
+            <div class="text-center text-white">
+                <?= htmlspecialchars($_SESSION['nom_usuario']) ?><br>
+                <small>Matrícula:  <?= htmlspecialchars($_SESSION["matricula"]) ?></small>
             </div>
+            <!-- DERECHA -->
+            <button class="btn btn-light" 
+            data-bs-toggle="modal"
+            data-bs-target="#modal_psswd">
+                <i class="bi bi-key"></i> ¿Olvidaste tu contraseña?
+            </button>
         </div>
     </nav>
+
 
     <div class="botones-grid">
         <!-- Botón de Gestión de Usuarios -->
@@ -68,7 +76,7 @@ require_login();
     
         <!-- Botón de Turnos -->
         <div class="boton-admin">
-            <a href="#" class="btn btn-outline-danger btn-lg">
+            <a href="crud_turnos.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-clock fs-1 d-block mb-2"></i>
                 Turnos
             </a>
@@ -83,7 +91,7 @@ require_login();
         </div>
 
     <!-- Modal Cambiar Contraseña -->
-    <div class="modal fade" id="modalContrasena" tabindex="-1" aria-labelledby="modalContrasenaLabel"
+    <div class="modal fade" id="modal_psswd" tabindex="-1" aria-labelledby="modalContrasenaLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

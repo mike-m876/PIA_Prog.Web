@@ -1,5 +1,8 @@
 <?php
 
+require_once 'includes/config.php';
+require_login();
+
 include 'includes/grupos/grupos_view.php';
 include 'includes/grupos/grupos_model.php';
 include 'includes/dbh.php';

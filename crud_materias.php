@@ -1,5 +1,7 @@
 <?php 
-session_start();
+require_once 'includes/config.php';
+require_login();
+
 include 'includes/dbh.php';
 include 'includes/materias/materias.php';  
 

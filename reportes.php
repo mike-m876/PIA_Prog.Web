@@ -1,4 +1,7 @@
 <?php
+require_once 'includes/config.php';
+require_login();
+
 require_once 'includes/dbh.php';
 
 try {

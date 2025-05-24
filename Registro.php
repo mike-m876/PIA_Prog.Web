@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'includes/registro/registro_view.php';
 include 'includes/registro/registro_model.php';
 include 'includes/dbh.php';

@@ -1,8 +1,9 @@
 <?php
-
+//REQUIERE LOGIN
 require_once 'includes/config.php';
 require_login();
 
+//INCLUSIÓN PHP
 require_once 'includes/dbh.php';
 include 'includes/alumnos_grupos/alumnos_grupos_model.php';
 
