@@ -1,13 +1,20 @@
 <?php
-
+//FORZAR LOGIN Y SESIONES
 require_once 'includes/config.php';
 require_login();
 
+//INCLUDES
 include 'includes/usuarios/usuarios_view.php';
 include 'includes/usuarios/usuarios_model.php';
 include 'includes/dbh.php';
 
-$result = get_usuario($pdo);
+//ARREGLO GET_USUARIOS
+$datos = get_usuarios($pdo);
+$usuarios = $datos['usuarios'];
+$page = $datos['page'];
+$total_pages = $datos['total_pages'];
+
+//ROLES
 $estados = get_estados($pdo);
 
 ?>
@@ -18,6 +25,7 @@ $estados = get_estados($pdo);
 <head>
     <meta charset="UTF-8" />
     <title>Gestión de usuarios</title>
+    <link href="CSS - Estilos/crud_usuarios.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -55,9 +63,26 @@ $estados = get_estados($pdo);
             </tr>
         </thead>
         <tbody>
-            <?php new_row($result) ?>
+            <?php new_row($usuarios) ?>
         </tbody>
     </table>
+
+    <div class="pagination d-flex justify-content-center align-items-center my-4">
+        <?php if ($page > 1): ?>
+            <a href="?page=<?= $page - 1 ?>" class="btn btn-outline-primary mx-1">&laquo; Anterior</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+            <a href="?page=<?= $i ?>" 
+            class="btn mx-1 <?= $i === $page ? 'btn-primary' : 'btn-outline-primary' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($page < $total_pages): ?>
+            <a href="?page=<?= $page + 1 ?>" class="btn btn-outline-primary mx-1">Siguiente &raquo;</a>
+        <?php endif; ?>
+    </div>
 
     <!-- Modal Editar -->
     <div class="modal fade" id="modal_editar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">

@@ -62,3 +62,15 @@ function require_login(): void {
         exit();
     }
 }
+
+function require_role(int $required_role): void {
+    if (!isset($_SESSION["user_id"]) || !isset($_SESSION["id_rol"])) {
+        header("Location: login.php");
+        exit();
+    }
+
+    if ($_SESSION["id_rol"] !== $required_role) {
+        header("Location: login.php");
+        exit();
+    }
+}

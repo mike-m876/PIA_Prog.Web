@@ -1,25 +1,25 @@
 <?php
 
-function new_row(array $result){
-    foreach($result as $row): ?>
+function new_row(array $usuarios){
+    foreach($usuarios as $usuario): ?>
     <tr>
-        <td><?= htmlspecialchars(strval($row['id_usuario'])) ?></td>
-        <td><?= htmlspecialchars($row['curp']) ?></td>
-        <td><?= htmlspecialchars($row['nombres']) 
-        . " " . htmlspecialchars($row['apellido_pat'])
-        . " " . htmlspecialchars($row['apellido_mat'])?></td>        
-        <td><?= htmlspecialchars($row['telefono']) ?></td>
-        <td><?= htmlspecialchars($row['email']) ?></td>
-        <td><?= htmlspecialchars($row['rol'])?></td>
-        <td><?= htmlspecialchars($row['estado']) ?></td>
-        <td><?= htmlspecialchars($row['fecha_registro']) ?></td>
+        <td><?= htmlspecialchars(strval($usuario['id_usuario'])) ?></td>
+        <td><?= htmlspecialchars($usuario['curp']) ?></td>
+        <td><?= htmlspecialchars($usuario['nombres']) 
+        . " " . htmlspecialchars($usuario['apellido_pat'])
+        . " " . htmlspecialchars($usuario['apellido_mat'])?></td>        
+        <td><?= htmlspecialchars($usuario['telefono']) ?></td>
+        <td><?= htmlspecialchars($usuario['email']) ?></td>
+        <td><?= htmlspecialchars($usuario['rol'])?></td>
+        <td><?= htmlspecialchars($usuario['estado']) ?></td>
+        <td><?= htmlspecialchars($usuario['fecha_registro']) ?></td>
         <td>
             <button class="btn btn-sm btn-primary"
                     name="edit_user" 
                     data-bs-toggle="modal"  
                     data-bs-target="#modal_editar"
                     onclick="fill_editar_usuario( 
-                        '<?= htmlspecialchars(strval($row['id_usuario'] ?? '')) ?>')">  
+                        '<?= htmlspecialchars(strval($usuario['id_usuario'] ?? '')) ?>')">  
                 <i class="bi bi-pencil-fill"></i>
             </button>
         </td>

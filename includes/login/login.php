@@ -1,6 +1,4 @@
 <?php
-
-
 if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
     //DECLARACIÓN DE VARIABLES
     $id_rol = (int) $_POST["id_rol"];
@@ -44,8 +42,12 @@ if($_SERVER ["REQUEST_METHOD"] == "POST" && isset($_POST['login_button'])) {
         $session_id = $new_session_id . "_" . $user["id_usuario"];
         session_id($session_id);
 
-        $_SESSION["nom_usuario"] = htmlspecialchars($user["nom_usuario"] ?? '');
+        $_SESSION["nom_usuario"] = htmlspecialchars(
+            $user["nombres"] . ' ' . $user["apellido_pat"]
+            . ' ' . $user["apellido_mat"]);
+        $_SESSION["matricula"] = $user["id_usuario"];
         $_SESSION["user_id"] = $user["id_usuario"];
+        $_SESSION["id_rol"] = $id_rol;
         $_SESSION["last_regeneration"] = time();
 
         //DIRECCIÓN A MENÚS
