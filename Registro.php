@@ -15,6 +15,7 @@ $roles = get_roles($pdo);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registro</title>
         <link href="CSS - Estilos/bootstrap.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
         <link href="CSS - Estilos/Estilos - Home.css" rel="stylesheet">
         <link href="CSS - Estilos/Registro.css" rel="stylesheet"> 
     </head>
@@ -102,8 +103,12 @@ $roles = get_roles($pdo);
                         <input type="email" id="email" placeholder="Correo electrónico" class="form-control" name="email">
                       </div>
                       <!--Contraseña-->
-                      <div class="form-group mt-2">
-                        <input type="password" id="psw" placeholder="Contraseña" class="form-control" name="password">
+                      <div class="form-group mt-3 position-relative">
+                        <label>Contraseña</label>
+                        <input type="password" placeholder="Ingrese su contraseña" class="form-control" name="psswd" id="psswd">
+                        <button type="button" class="btn position-absolute top-50 end-0 translate-middle-y me-2" onclick="togglePassword()" tabindex="-1" style="background: none; border: none;">
+                          <i id="toggleIcon" class="bi bi-eye-fill"></i>
+                        </button>
                       </div>
                       <!--Mensaje Requisitos-->
                       <ul id="mensaje_psw" class="mt-3">
@@ -122,7 +127,8 @@ $roles = get_roles($pdo);
               </div>
             </div>
           </div>
-    
+          
+        <script src="JS/psswrd.js"></script>
         <script src="JS/bootstrap.js"></script>
         <script src="JS/Registro.js"></script>
     </body>
