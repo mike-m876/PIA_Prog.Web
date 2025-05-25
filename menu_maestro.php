@@ -37,7 +37,7 @@ require_login();
     </nav>
 
     <div class="contenido-principal d-flex justify-content-center align-items-center">
-        <a href="crud_calificaciones_generales.php" class="btn btn-outline-success btn-lg px-5 py-4 text-center">
+        <a href="crud_calificaciones.php" class="btn btn-outline-success btn-lg px-5 py-4 text-center">
             <i class="bi bi-upload fs-1 d-block mb-2"></i>
             Subir Calificaciones
         </a>

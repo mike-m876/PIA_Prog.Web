@@ -52,7 +52,7 @@ require_role(3)
     
         <!-- Botón de Carga de Calificaciones -->
         <div class="boton-admin">
-            <a href="crud_calificaciones_generales.php" class="btn btn-outline-danger btn-lg">
+            <a href="crud_calificaciones.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-journal-check fs-1 d-block mb-2"></i>
                 Calificaciones
             </a>
