@@ -67,13 +67,8 @@ $roles = get_roles($pdo);
               <div class="card-body">
                 <form action="includes/login/login.php" id="login_form" method="POST">    
                   <!--SELECTOR DE ROl-->
-<<<<<<< HEAD
-                  <label for= "id_rol" class="mb-3">Elegir rol de usuario: </label>
-                  <select id="id_rol" name="id_rol" required>
-=======
                   <label for= "id_rol" class="mb-3" required>Elegir rol de usuario: </label>
                   <select id="id_rol" name="id_rol" class="form-select mb-3" required>
->>>>>>> e23bc4cc11954e8dea8191bf5e486c8b21ba5b46
                     <option value="" selected disabled>Elegir...</option>
                     <?php foreach ($roles as $rol): ?>
                         <option value="<?= htmlspecialchars((int)($rol['id_rol'] ?? '')) ?>">

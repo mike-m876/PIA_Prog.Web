@@ -37,7 +37,13 @@ $estados = get_estados($pdo);
 <body class="p-4">
 
     <h2>GESTIÓN DE USUARIOS</h2>
-
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+        <div class="mb-3">
+            <a href="menu_admin.php" class="btn btn-secondary">
+                <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
+            </a>
+        </div>
+    <?php endif; ?>
     <div class="mb-3">
         <input type="text" id="CURP_search" placeholder="Ingrese la CURP a buscar" class="form-control" maxlength="5" />
     </div>

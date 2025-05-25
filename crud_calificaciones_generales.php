@@ -33,6 +33,21 @@ if ($id_grupo && $id_materia) {
 </head>
 
 <body class="container mt-4">
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <div class="mb-3">
+        <a href="menu_admin.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
+        </a>
+      </div>
+      <?php endif; ?> 
+      
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'MAESTRO'): ?>
+    <div class="mb-3">
+        <a href="menu_maestro.php" class="btn btn-secondary">
+          <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Maestro
+        </a>
+    </div>
+    <?php endif; ?> 
     <h1 class="text-center mb-4">Gestión de Calificaciones</h1>
 
     <table class="table table-bordered table-striped">

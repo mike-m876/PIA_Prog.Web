@@ -34,8 +34,10 @@ function new_row($lista_alumnos) {
                 <button class="btn btn-sm btn-primary"
                     data-bs-toggle="modal"
                     data-bs-target="#modal_editar_alumno"
-                    data-id="<?= htmlspecialchars($alumno['id_usuario']) ?>"
-                    data-nombre="<?= htmlspecialchars($alumno['nombre_completo']) ?>">
+                    onclick="fill_editar_alumno(
+                        '<?= htmlspecialchars($alumno['id_usuario']) ?>',
+                        '<?= htmlspecialchars($alumno['nombre_completo']) ?>'
+                    )">
                     <i class="bi bi-pencil-fill"></i>
                 </button>
             </td>

@@ -29,6 +29,13 @@ $maestros = get_maestro($pdo);
 </head>
 
 <body class="container mt-4">
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <div class="mb-3">
+        <a href="menu_admin.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
+        </a>
+    </div>
+    <?php endif; ?>
     <h1 class="text-center">GESTIÓN DE GRUPOS</h1>
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modal_agregar">Agregar Grupo</button>
 

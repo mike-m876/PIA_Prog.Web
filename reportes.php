@@ -30,6 +30,13 @@ try {
 </head>
 
 <body class="container mt-4">
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <div class="mb-3">
+        <a href="menu_admin.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
+        </a>
+    </div>
+    <?php endif; ?> 
     <h2 class="mb-4">Desempeño por Ciclo Escolar</h2>
 
     <div class="mb-4 text-center">
