@@ -22,7 +22,7 @@ document.getElementById('btnCerrarSesion').addEventListener('click', function ()
     sessionStorage.clear();
 
     // Redirige a la página de login
-    window.location.href = "LOGIN.html";
+    window.location.href = "LOGIN.php";
 });
 
 document.querySelectorAll('.boton-admin a').forEach(boton => {
@@ -32,22 +32,22 @@ document.querySelectorAll('.boton-admin a').forEach(boton => {
       
       switch(accion) {
           case 'Gestión de Usuarios':
-              window.location.href = "gestion_usuarios.html";
+              window.location.href = "crud_usuarios.php";
               break;
           case 'Calificaciones':
-              window.location.href = "calificaciones.html";
+              window.location.href = "crud_calificaciones_generales.php";
               break;
           case 'Materias':
-              window.location.href = "materias.html";
+              window.location.href = "crud_materias.php";
               break;
           case 'Grupos':
-              window.location.href = "grupos.html";
+              window.location.href = "crud_grupos.php";
               break;
           case 'Turnos':
-              window.location.href = "turnos.html";
+              window.location.href = "crud_turnos.php";
               break;
           case 'Reporte Estadístico':
-              window.location.href = "reporte_estadistico.html";
+              window.location.href = "reportes.php";
               break;
           default:
               console.log(`Acción no definida: ${accion}`);

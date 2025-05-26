@@ -39,6 +39,14 @@ if ($id_alumno) {
 </form>
 
 <?php if ($infoAlumno): ?>
+
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'ALUMNO'): ?>
+        <div class="mb-3">
+            <a href="menu_alumno.php" class="btn btn-secondary">
+                <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Alumno
+            </a>
+        </div>
+    <?php endif; ?>
     <h4 class="mb-3">Calificaciones de: MATRÍCULA: <?= $infoAlumno['id_usuario'] ?></h4>
 
     <table class="table table-bordered table-striped">

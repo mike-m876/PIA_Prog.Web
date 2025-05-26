@@ -39,6 +39,14 @@ unset($_SESSION['success_message'], $_SESSION['error_message']);
         <div class="alert alert-danger"><?= htmlspecialchars($error_message) ?></div>
     <?php endif; ?>
 
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <div class="mb-3">
+        <a href="menu_alumno.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
+        </a>
+      </div>
+      <?php endif; ?> 
+      
     <form method="GET" action="lista_alumnos.php" class="mb-3">
         <label class="form-label">Seleccione un Grupo</label>
         <div class="d-flex gap-2">

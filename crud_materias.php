@@ -21,6 +21,13 @@ try {
 </head>
 <body class="bg-light">
 <div class="container mt-5">
+    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <div class="mb-3">
+        <a href="menu_admin.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
+        </a>
+    </div>
+    <?php endif; ?>  
     <h2>Gestión de Materias</h2>
 
     <?php check_materias_errors();?>
