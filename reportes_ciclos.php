@@ -35,7 +35,7 @@ try {
 </head>
 
 <body class="container mt-4">
-    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 3): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 3): ?>
     <div class="mb-3">
         <a href="menu_admin.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director

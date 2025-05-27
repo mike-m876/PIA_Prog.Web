@@ -36,6 +36,15 @@ $maestros = get_maestro($pdo);
         </a>
     </div>
     <?php endif; ?>
+    <?php if (!empty($_SESSION['errors_grupos'])): ?>
+    <div class="alert alert-danger">
+        <ul>
+            <?php foreach ($_SESSION['errors_grupos'] as $error): ?>
+                <li><?= htmlspecialchars($error) ?></li>
+            <?php endforeach; unset($_SESSION['errors_grupos']); ?>
+        </ul>
+    </div>
+<?php endif; ?>
     <h1 class="text-center">GESTIÓN DE GRUPOS</h1>
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modal_agregar">Agregar Grupo</button>
 
