@@ -37,6 +37,11 @@ $estados = get_estados($pdo);
 <body class="p-4">
 
     <h2>GESTIÓN DE USUARIOS</h2>
+        <form method="get" class="mb-3 d-flex" role="search">
+            <input type="text" name="curp" class="form-control me-2" placeholder="Buscar por CURP..." 
+            value="<?= htmlspecialchars($curp) ?>">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
     <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 3): ?>
         <div class="mb-3">
             <a href="menu_admin.php" class="btn btn-secondary">
