@@ -15,7 +15,7 @@ function get_grupo(PDO $pdo)
     JOIN aula a ON g.id_aula = a.id_aula
     JOIN ciclos_escolares c ON g.id_ciclo = c.id_ciclo
     JOIN turnos t ON g.id_turno = t.id_turno
-    JOIN usuarios u ON g.id_maestro = u.id_usuario}
+    JOIN usuarios u ON g.id_maestro = u.id_usuario
     WHERE g.activo = 1
     ORDER BY g.id_grupo DESC;";
 
