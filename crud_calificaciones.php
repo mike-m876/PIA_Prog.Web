@@ -6,6 +6,22 @@ require_login();
 include 'includes/dbh.php';
 include 'includes/calificaciones/calificaciones_model.php';
 include 'includes/calificaciones/calificaciones_view.php';
+$limit = 10;
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
+
+if (isset($_SESSION['id_materia'], $_SESSION['id_grupo'])) {
+    $id_materia = $_SESSION['id_materia'];
+    $id_grupo = $_SESSION['id_grupo'];
+    
+    $total = count_calificaciones($pdo, $id_materia, $id_grupo);
+    $alumnos = get_calificaciones($pdo, $id_materia, $id_grupo, $limit, $offset);
+    
+    $total_pages = ceil($total / $limit);
+} else {
+    $alumnos = [];
+    $total_pages = 1;
+}
 
 $results = get_mater_grupo($pdo);
 
@@ -76,7 +92,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_materia'], $_POST[
         </tbody>
     </table>
 
+    <div class="pagination d-flex justify-content-center align-items-center my-4">
+        <?php if ($page > 1): ?>
+            <a href="?page=<?= $page - 1 ?>" class="btn btn-outline-primary mx-1">&laquo; Anterior</a>
+        <?php endif; ?>
 
+        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+            <a href="?page=<?= $i ?>" 
+            class="btn mx-1 <?= $i === $page ? 'btn-primary' : 'btn-outline-primary' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($page < $total_pages): ?>
+            <a href="?page=<?= $page + 1 ?>" class="btn btn-outline-primary mx-1">Siguiente &raquo;</a>
+        <?php endif; ?>
+    </div>
+    
 <div class="modal fade" id="modal_editar" tabindex="-1" aria-labelledby="modalCalifsLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-scrollable">
     <div class="modal-content">

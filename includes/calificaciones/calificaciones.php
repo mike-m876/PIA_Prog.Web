@@ -4,13 +4,33 @@ include 'calificaciones_model.php';
 include 'calificaciones_view.php';
 
 $alumnos = [];
+$limit = 10; // filas por página
+$page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_materia'], $_POST['id_grupo'])) {
     $id_grupo = $_POST['id_grupo'];
     $id_materia = $_POST['id_materia'];
 
-    $alumnos = get_calificaciones($pdo, $id_materia, $id_grupo);   
+    // Guardar valores para mantenerlos visibles después de la paginación
+    $_SESSION['id_grupo'] = $id_grupo;
+    $_SESSION['id_materia'] = $id_materia;
+    
+    // Para POST cargamos la página 1
+    $page = 1;
+    $offset = 0;
+
+    $total = count_calificaciones($pdo, $id_materia, $id_grupo);
+    $alumnos = get_calificaciones($pdo, $id_materia, $id_grupo, $limit, $offset);
+} elseif (isset($_SESSION['id_materia'], $_SESSION['id_grupo'])) {
+    // Para GET paginación con valores guardados
+    $id_grupo = $_SESSION['id_grupo'];
+    $id_materia = $_SESSION['id_materia'];
+
+    $total = count_calificaciones($pdo, $id_materia, $id_grupo);
+    $alumnos = get_calificaciones($pdo, $id_materia, $id_grupo, $limit, $offset);
 }
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_califs']) && isset($_POST['id_materia'], $_POST['id_grupo'])){
     $id_grupo = $_POST['id_grupo'];

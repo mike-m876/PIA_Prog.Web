@@ -20,26 +20,39 @@ function get_mater_grupo ($pdo){
 }
 
 
-function get_calificaciones($pdo, $id_materia, $id_grupo) {
+function get_calificaciones($pdo, $id_materia, $id_grupo, $limit = null, $offset = null) {
     $query =
-           "SELECT 
-                c.*,
-                u.id_usuario as matricula,
-                CONCAT(u.nombres, ' ', u.apellido_pat, ' ', u.apellido_mat) AS nombre,
-                c.periodo1 as parcial1,
-                c.periodo2 as parcial2,
-                c.prom_final as promedio
-            FROM calificaciones c
-            JOIN usuarios u ON c.id_alumno = u.id_usuario
-            WHERE c.id_materia = :id_materia AND c.id_grupo = :id_grupo;";
+        "SELECT 
+            c.*,
+            u.id_usuario as id_alumno,
+            u.id_usuario as matricula,
+            CONCAT(u.nombres, ' ', u.apellido_pat, ' ', u.apellido_mat) AS nombre,
+            c.periodo1 as parcial1,
+            c.periodo2 as parcial2,
+            c.prom_final as promedio
+        FROM calificaciones c
+        JOIN usuarios u ON c.id_alumno = u.id_usuario
+        WHERE c.id_materia = :id_materia AND c.id_grupo = :id_grupo
+        ORDER BY u.apellido_pat, u.nombres";
+
+    if ($limit !== null && $offset !== null) {
+        $query .= " LIMIT :limit OFFSET :offset";
+    }
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id_materia', $id_materia, PDO::PARAM_INT);
     $stmt->bindParam(':id_grupo', $id_grupo, PDO::PARAM_INT);
+
+    if ($limit !== null && $offset !== null) {
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+    }
+
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 
 function update_calificaciones($pdo, $id_alumno, $id_materia, $id_grupo, $parcial1 = null, $parcial2 = null) {
     $parcial1 = ($parcial1 !== null && $parcial1 !== '') ? floatval($parcial1) : null;
@@ -103,4 +116,13 @@ function update_calificaciones($pdo, $id_alumno, $id_materia, $id_grupo, $parcia
     $stmt_update->bindParam(':prom', $promedio);
 
     $stmt_update->execute();
+}
+
+function count_calificaciones($pdo, $id_materia, $id_grupo) {
+    $query = "SELECT COUNT(*) FROM calificaciones WHERE id_materia = :id_materia AND id_grupo = :id_grupo";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':id_materia', $id_materia, PDO::PARAM_INT);
+    $stmt->bindParam(':id_grupo', $id_grupo, PDO::PARAM_INT);
+    $stmt->execute();
+    return (int) $stmt->fetchColumn();
 }
