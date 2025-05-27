@@ -32,6 +32,11 @@ require_role(3)
                 <small>Matrícula:  <?= htmlspecialchars($_SESSION["matricula"]) ?></small>
             </div>
         </div>
+        <div>
+            <a href="cerrar_sesion.php" class="btn btn-outline-light btn-sm">
+                <i class=""bi bi-box-arrow-rigth></i>Cerrar Sesión
+            </a>
+        </div>
     </nav>
 
 

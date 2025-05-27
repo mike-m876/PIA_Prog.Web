@@ -30,6 +30,11 @@ require_login();
                 <small>Matrícula:  <?= htmlspecialchars($_SESSION["matricula"]) ?></small>
             </div>
         </div>
+        <div>
+            <a href="cerrar_sesion.php" class="btn btn-outline-light btn-sm">
+                <i class=""bi bi-box-arrow-rigth></i>Cerrar Sesión
+            </a>
+        </div>
     </nav>
 
     <div class="contenido-principal d-flex justify-content-center align-items-center">
