@@ -32,6 +32,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_materia'], $_POST[
 <body class="container mt-4">
     <h1 class="text-center mb-4">Gestión de Calificaciones</h1>
 
+    <?php
+    if (!empty($_SESSION['errors_calificaciones'])) {
+        echo '<div class="alert alert-danger">';
+        foreach ($_SESSION['errors_calificaciones'] as $error) {
+            echo '<p>' . htmlspecialchars($error) . '</p>';
+        }
+        echo '</div>';
+        unset($_SESSION['errors_calificaciones']);
+    }
+
+    if (!empty($_SESSION['success_calificaciones'])) {
+        echo '<div class="alert alert-success">';
+        echo htmlspecialchars($_SESSION['success_calificaciones']);
+        echo '</div>';
+        unset($_SESSION['success_calificaciones']);
+    }
+    ?>
+
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
