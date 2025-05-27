@@ -44,10 +44,6 @@ $estados = get_estados($pdo);
             </a>
         </div>
     <?php endif; ?>
-    <div class="mb-3">
-        <input type="text" id="CURP_search" placeholder="Ingrese la CURP a buscar" class="form-control" maxlength="5" />
-    </div>
-    <button id="btnBuscar" class="btn btn-primary mb-3">Buscar</button>
 
     <div id="infoAlumno" class="mb-3 d-none">
         <strong>Matrícula:</strong> <span id="infoMatricula"></span><br />
