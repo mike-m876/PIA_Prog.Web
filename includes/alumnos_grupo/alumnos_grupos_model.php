@@ -52,13 +52,18 @@ function add_alumnos(PDO $pdo, int $id_alumno, int $id_grupo)
     $stmt->execute();
 }
 
-function quitar_alumno(PDO $pdo, int $id_alumno, int $id_grupo)
-{
+function quitar_alumno(PDO $pdo, int $id_alumno, int $id_grupo) {
     $query = "DELETE FROM alumnos_grupo WHERE id_grupo = :id_grupo AND id_alumno = :id_alumno";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id_grupo', $id_grupo);
     $stmt->bindParam(':id_alumno', $id_alumno);
     $stmt->execute();
+
+    $query2 = "DELETE FROM calificaciones WHERE id_alumno = :id_alumno AND id_grupo = :id_grupo";
+    $stmt2 = $pdo->prepare($query2);
+    $stmt2->bindParam(':id_grupo', $id_grupo);
+    $stmt2->bindParam(':id_alumno', $id_alumno);
+    $stmt2->execute();
 }
 
 function edit_grupo(PDO $pdo, int $id_grupo, int $id_nivel, int $id_aula, int $id_ciclo, int $id_turno, int $id_maestro)

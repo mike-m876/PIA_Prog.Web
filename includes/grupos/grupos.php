@@ -55,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_grupo'])) {
 }
 
 if (isset($_POST['delete_grupo'])) {
-    $id_grupo = $_POST['id_grupo'];
+    $id_grupo = (int)$_POST['grupo_eliminar'];
     delete_grupo($pdo, $id_grupo);
     header("Location: ../../crud_grupos.php");
-    exit;
+    exit;
 }
