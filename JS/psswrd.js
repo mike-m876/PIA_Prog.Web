@@ -1,6 +1,6 @@
 // Mostrar/Ocultar contraseña
 function togglePassword() {
-  const input = document.getElementById("psswd");
+  const input = document.getElementById("psw");
   const icon = document.getElementById("toggleIcon");
   
   if (input.type === "password") {

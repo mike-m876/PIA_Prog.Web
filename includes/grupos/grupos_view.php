@@ -1,5 +1,4 @@
 <?php
-
 function new_row(array $result)
 {
     foreach ($result as $grupo): ?>
@@ -10,6 +9,7 @@ function new_row(array $result)
             <td><?= htmlspecialchars($grupo['turno']) ?></td>
             <td><?= htmlspecialchars($grupo['maestro']) ?></td>
             <td>
+                <!-- EDITAR-->
                 <button class="btn btn-sm btn-primary"
                     name="edit_user"
                     data-bs-toggle="modal"
@@ -23,6 +23,13 @@ function new_row(array $result)
                         '<?= $grupo['id_maestro'] ?>'
                     )">
                     <i class="bi bi-pencil-fill"></i>
+                </button>
+                <!-- ELIMINAR -->
+                <button class="btn btn-danger btn-sm" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#modal_eliminar" 
+                    data-id="<?= $grupo['id_grupo'] ?>">
+                    <i class="bi bi-trash"></i> Eliminar
                 </button>
             </td>
         </tr>

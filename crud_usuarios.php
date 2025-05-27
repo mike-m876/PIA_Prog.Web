@@ -37,7 +37,7 @@ $estados = get_estados($pdo);
 <body class="p-4">
 
     <h2>GESTIÓN DE USUARIOS</h2>
-    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'DIRECTOR'): ?>
         <div class="mb-3">
             <a href="menu_admin.php" class="btn btn-secondary">
                 <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director

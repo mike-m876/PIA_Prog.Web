@@ -15,7 +15,8 @@ function get_grupo(PDO $pdo)
     JOIN aula a ON g.id_aula = a.id_aula
     JOIN ciclos_escolares c ON g.id_ciclo = c.id_ciclo
     JOIN turnos t ON g.id_turno = t.id_turno
-    JOIN usuarios u ON g.id_maestro = u.id_usuario
+    JOIN usuarios u ON g.id_maestro = u.id_usuario}
+    WHERE g.activo = 1
     ORDER BY g.id_grupo DESC;";
 
     $stmt = $pdo->prepare($query);
@@ -142,5 +143,12 @@ function edit_grupo(PDO $pdo, int $id_grupo, int $id_nivel, int $id_aula, int $i
     $stmt->bindParam(':id_turno', $id_turno);
     $stmt->bindParam(':id_maestro', $id_maestro);
     $stmt->execute();
+}
+
+function delete_grupo(PDO $pdo, int $id_grupo){
+    $delete = $pdo->prepare("UPDATE grupo SET activo = 0 WHERE id_grupo = :id_grupo;");
+    $delete->bindParam(':id_grupo', $id_grupo);
+    $delete->execute();
+    return $delete;
 }
 

@@ -33,7 +33,7 @@ if ($id_grupo && $id_materia) {
 </head>
 
 <body class="container mt-4">
-    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'DIRECTOR'): ?>
     <div class="mb-3">
         <a href="menu_admin.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
@@ -41,7 +41,7 @@ if ($id_grupo && $id_materia) {
       </div>
       <?php endif; ?> 
       
-    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'MAESTRO'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'MAESTRO'): ?>
     <div class="mb-3">
         <a href="menu_maestro.php" class="btn btn-secondary">
           <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Maestro

@@ -30,6 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_materia'], $_POST[
 </head>
 
 <body class="container mt-4">
+      <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'MAESTRO'): ?>
+    <div class="mb-3">
+        <a href="menu_maestro.php" class="btn btn-secondary">
+          <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Maestro
+        </a>
+    </div>
+    <?php endif; ?>
+    
     <h1 class="text-center mb-4">Gestión de Calificaciones</h1>
 
     <table class="table table-bordered table-striped">

@@ -5,6 +5,7 @@ function get_grupo(PDO $pdo) {
                 g.id_grupo,
                 CONCAT(n.nombre, ' - ', a.nombre, ' - ', t.nombre) AS nombre_grupo
               FROM grupo g
+              WHERE g.activo = 1
               JOIN nivel n ON g.id_nivel = n.id_nivel
               JOIN aula a ON g.id_aula = a.id_aula
               JOIN turnos t ON g.id_turno = t.id_turno";
