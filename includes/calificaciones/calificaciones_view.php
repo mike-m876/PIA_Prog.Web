@@ -22,8 +22,8 @@ function new_row_califs($alumnos) {
             <td><?= htmlspecialchars($alumno['matricula']) ?></td>
             <td><?= htmlspecialchars($alumno['nombre']) ?></td>
             <td><?= is_null($alumno['parcial1']) && is_null($alumno['parcial2']) ? '-' : number_format(floatval($alumno['promedio']), 2) ?></td>
-            <td><input type="number" name="parcial1[<?= $alumno['id_alumno'] ?>]" min="0" max="10" step="0.1" class="form-control" value="<?= htmlspecialchars($alumno['parcial1'] ?? '') ?>" /></td>
-            <td><input type="number" name="parcial2[<?= $alumno['id_alumno'] ?>]" min="0" max="10" step="0.1" class="form-control" value="<?= htmlspecialchars($alumno['parcial2'] ?? '') ?>" /></td>
+            <td><input type="number" name="parcial1[<?= $alumno['id_alumno'] ?>]" min="0" max="100" step="0.1" class="form-control" value="<?= htmlspecialchars($alumno['parcial1'] ?? '') ?>" /></td>
+            <td><input type="number" name="parcial2[<?= $alumno['id_alumno'] ?>]" min="0" max="100" step="0.1" class="form-control" value="<?= htmlspecialchars($alumno['parcial2'] ?? '') ?>" /></td>
         </tr>
     <?php endforeach;
 }

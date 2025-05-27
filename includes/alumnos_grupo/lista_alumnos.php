@@ -39,10 +39,13 @@ unset($_SESSION['success_message'], $_SESSION['error_message']);
         <div class="alert alert-danger"><?= htmlspecialchars($error_message) ?></div>
     <?php endif; ?>
 
-    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'DIRECTOR'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 3): ?>
     <div class="mb-3">
         <a href="menu_admin.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
+        </a>
+        <a href="crud_grupos.php" class="btn btn-info">
+            <i class="bi bi-arrow-left-circle"></i> Volver al CRUD de Grupos
         </a>
       </div>
       <?php endif; ?> 

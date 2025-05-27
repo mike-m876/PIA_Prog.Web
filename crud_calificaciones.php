@@ -24,16 +24,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_materia'], $_POST[
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupos</title>
+    <title>CALIFICACIONES</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 
 <body class="container mt-4">
-    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'MAESTRO'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 2): ?>
       <div class="mb-3">
           <a href="menu_maestro.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Maestro
+          </a>
+      </div>
+    <?php endif; ?>
+      <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 3): ?>
+      <div class="mb-3">
+          <a href="menu_admin.php" class="btn btn-secondary">
+            <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
           </a>
       </div>
     <?php endif; ?>

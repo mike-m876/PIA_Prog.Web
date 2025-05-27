@@ -18,7 +18,7 @@ document.querySelectorAll('.boton-admin a').forEach(boton => {
               window.location.href = "crud_usuarios.php";
               break;
           case 'Calificaciones':
-              window.location.href = "crud_calificaciones_generales.php";
+              window.location.href = "crud_calificaciones.php";
               break;
           case 'Materias':
               window.location.href = "crud_materias.php";
@@ -30,7 +30,7 @@ document.querySelectorAll('.boton-admin a').forEach(boton => {
               window.location.href = "crud_turnos.php";
               break;
           case 'Reporte Estadístico':
-              window.location.href = "reportes.php";
+              window.location.href = "reportes_ciclos.php";
               break;
           default:
               console.log(`Acción no definida: ${accion}`);

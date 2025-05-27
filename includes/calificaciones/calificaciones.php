@@ -27,8 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_califs']) && iss
         $calif2 = $parcial2[$id_alumno] ?? null;
 
 if ($calif1 !== null && $calif1 !== '') {
-            if (!is_numeric($calif1) || $calif1 < 0 || $calif1 > 10) {
-                $errors[] = "Parcial 1 de alumno con ID $id_alumno debe ser un número entre 0 y 10.";
+            if (!is_numeric($calif1) || $calif1 < 0 || $calif1 > 100) {
+                $errors[] = "Parcial 1 de alumno con ID $id_alumno debe ser un número entre 0 y 100.";
                 continue;
             }
         } else {
@@ -36,8 +36,8 @@ if ($calif1 !== null && $calif1 !== '') {
         }
 
         if ($calif2 !== null && $calif2 !== '') {
-            if (!is_numeric($calif2) || $calif2 < 0 || $calif2 > 10) {
-                $errors[] = "Parcial 2 de alumno con ID $id_alumno debe ser un número entre 0 y 10.";
+            if (!is_numeric($calif2) || $calif2 < 0 || $calif2 > 100) {
+                $errors[] = "Parcial 2 de alumno con ID $id_alumno debe ser un número entre 0 y 100.";
                 continue;
             }
         } else {

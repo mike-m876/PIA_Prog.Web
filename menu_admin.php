@@ -31,12 +31,6 @@ require_role(3)
                 <?= htmlspecialchars($_SESSION['nom_usuario']) ?><br>
                 <small>Matrícula:  <?= htmlspecialchars($_SESSION["matricula"]) ?></small>
             </div>
-            <!-- DERECHA -->
-            <button class="btn btn-light" 
-            data-bs-toggle="modal"
-            data-bs-target="#modal_psswd">
-                <i class="bi bi-key"></i> ¿Olvidaste tu contraseña?
-            </button>
         </div>
     </nav>
 
@@ -84,47 +78,12 @@ require_role(3)
     
         <!-- Botón de Reporte Estadístico -->
         <div class="boton-admin">
-            <a href="Reportes.php" class="btn btn-outline-danger btn-lg">
+            <a href="reportes_ciclos.php" class="btn btn-outline-danger btn-lg">
                 <i class="bi bi-graph-up fs-1 d-block mb-2"></i>
                 Reporte Estadístico
             </a>
         </div>
 
-    <!-- Modal Cambiar Contraseña -->
-    <div class="modal fade" id="modal_psswd" tabindex="-1" aria-labelledby="modalContrasenaLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form id="formCambiarContrasena">
-                    <div class="modal-header bg-danger text-white">
-                        <h5 class="modal-title" id="modalContrasenaLabel"><i class="bi bi-lock-fill me-2"></i>Cambiar
-                            Contraseña</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                            aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="actual" class="form-label">Contraseña Actual</label>
-                            <input type="password" class="form-control" id="actual" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nueva" class="form-label">Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="nueva" required minlength="12">
-                        </div>
-                        <div class="mb-3">
-                            <label for="confirmar" class="form-label">Confirmar Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="confirmar" required minlength="12">
-                            <div class="invalid-feedback">Las contraseñas no coinciden.</div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/psswrd.js"></script>
     <script src="JS/mn_adm.js"></script>

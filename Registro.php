@@ -104,7 +104,7 @@ $roles = get_roles($pdo);
                       <!--Contraseña-->
                       <div class="form-group mt-3 position-relative">
                         <label>Contraseña</label>
-                        <input type="password" placeholder="Ingrese su contraseña" class="form-control" name="psswd" id="psw">
+                        <input type="password" placeholder="Ingrese su contraseña" class="form-control" name="password" id="psw">
                         <button type="button" class="btn position-absolute top-50 end-0 translate-middle-y me-2" onclick="togglePassword()" tabindex="-1" style="background: none; border: none;">
                           <i id="toggleIcon" class="bi bi-eye-fill"></i>
                         </button>

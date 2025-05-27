@@ -21,7 +21,7 @@ try {
 </head>
 <body class="bg-light">
 <div class="container mt-5">
-    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'DIRECTOR'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 3): ?>
     <div class="mb-3">
         <a href="menu_director.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director

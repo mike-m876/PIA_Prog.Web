@@ -29,7 +29,7 @@ $maestros = get_maestro($pdo);
 </head>
 
 <body class="container mt-4">
-    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'DIRECTOR'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 3): ?>
     <div class="mb-3">
         <a href="menu_admin.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
@@ -67,7 +67,7 @@ $maestros = get_maestro($pdo);
                     <form action="includes/grupos/grupos.php" method="POST">
                         <div class="mb-3">
                             <label for="edit_nivel" class="form-label">Nivel</label>
-                            <select type="text" class="form-control" id="edit_nivel" name="nivel" required>
+                            <select type="text" class="form-control" id="nivel" name="nivel" required>
                                 <option value="">Seleccionar nivel...</option>
                                 <?php foreach($niveles as $nivel): ?>
                                 <option value="<?= htmlspecialchars(($nivel['id_nivel'] ?? '')) ?>">
@@ -78,7 +78,7 @@ $maestros = get_maestro($pdo);
                         </div>
                         <div class="mb-3">
                             <label for="edit_aula" class="form-label">Aula</label>
-                            <select type="text" class="form-control" id="edit_aula" name="aula" required>
+                            <select type="text" class="form-control" id="aula" name="aula" required>
                                 <option value="">Seleccionar aula...</option>
                                 <?php foreach($aulas as $aula): ?>
                                 <option value="<?= htmlspecialchars(($aula['id_aula'] ?? '')) ?>">
@@ -89,7 +89,7 @@ $maestros = get_maestro($pdo);
                         </div>
                         <div class="mb-3">
                             <label for="edit_ciclo" class="form-label">Ciclo Escolar</label>
-                            <select type="text" class="form-control" id="edit_ciclo" name="ciclo" required>
+                            <select type="text" class="form-control" id="ciclo" name="ciclo" required>
                                 <option value="">Seleccionar ciclo...</option>
                                 <?php foreach($ciclos as $ciclo): ?>
                                 <option value="<?= htmlspecialchars(($ciclo['id_ciclo'] ?? '')) ?>">
@@ -100,7 +100,7 @@ $maestros = get_maestro($pdo);
                         </div>
                         <div class="mb-3">
                             <label for="edit_turno" class="form-label">Turno</label>
-                            <select type="text" class="form-control" id="edit_turno" name="turno" required>
+                            <select type="text" class="form-control" id="turno" name="turno" required>
                                 <option value="">Seleccionar turno...</option>
                                 <?php foreach($turnos as $turno): ?>
                                 <option value="<?= htmlspecialchars(($turno['id_turno'] ?? '')) ?>">

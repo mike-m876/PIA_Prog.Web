@@ -40,7 +40,7 @@ if ($id_alumno) {
 
 <?php if ($infoAlumno): ?>
 
-    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'ALUMNO'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 1): ?>
         <div class="mb-3">
             <a href="menu_alumno.php" class="btn btn-secondary">
                 <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Alumno

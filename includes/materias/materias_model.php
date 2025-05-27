@@ -57,3 +57,41 @@ function delete_materia(PDO $pdo, int $id_materia){
     $delete->execute();
     return $delete;
 }
+
+function get_materias_paginated(PDO $pdo) {
+    $results_per_page = 10;
+
+    // COMPROBAR MATERIAS ACTIVAS
+    $query = "SELECT COUNT(*) as total FROM materias WHERE activo = 1";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $total_results = (int) $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+
+    // SI NO HAY ACTIVAS
+    if ($total_results === 0) {
+        return [
+            'materias' => [],
+            'page' => 1,
+            'total_pages' => 1
+        ];
+    }
+
+    $total_pages = ceil($total_results / $results_per_page);
+    $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+    $page = max(1, min($page, $total_pages));
+    $start_from = ($page - 1) * $results_per_page;
+
+    $query = "SELECT * FROM materias WHERE activo = 1 LIMIT :start_from, :results_per_page";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':start_from', $start_from, PDO::PARAM_INT);
+    $stmt->bindParam(':results_per_page', $results_per_page, PDO::PARAM_INT);
+    $stmt->execute();
+    $materias = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return [
+        'materias' => $materias,
+        'page' => $page,
+        'total_pages' => $total_pages
+    ];
+}
+

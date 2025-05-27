@@ -4,9 +4,13 @@ require_login();
 
 include 'includes/dbh.php';
 include 'includes/materias/materias.php';  
+require_once 'includes/materias/materias_model.php';
 
 try {
-    $materias = get_materias($pdo);  
+    $datos = get_materias_paginated($pdo);
+    $materias = $datos['materias'];
+    $page = $datos['page'];
+    $total_pages = $datos['total_pages'];
 } catch (PDOException $e) {
     die("Error al obtener materias: " . $e->getMessage());
 }
@@ -21,7 +25,7 @@ try {
 </head>
 <body class="bg-light">
 <div class="container mt-5">
-    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'DIRECTOR'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 3): ?>
     <div class="mb-3">
         <a href="menu_admin.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
@@ -47,6 +51,23 @@ try {
         </tbody>
     </table>
 </div>
+
+    <div class="pagination d-flex justify-content-center align-items-center my-4">
+        <?php if ($page > 1): ?>
+            <a href="?page=<?= $page - 1 ?>" class="btn btn-outline-primary mx-1">&laquo; Anterior</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+            <a href="?page=<?= $i ?>" 
+            class="btn mx-1 <?= $i === $page ? 'btn-primary' : 'btn-outline-primary' ?>">
+                <?= $i ?>
+            </a>
+        <?php endfor; ?>
+
+        <?php if ($page < $total_pages): ?>
+            <a href="?page=<?= $page + 1 ?>" class="btn btn-outline-primary mx-1">Siguiente &raquo;</a>
+        <?php endif; ?>
+    </div>
 
 <!-- Modal Agregar -->
 <div class="modal fade" id="modal_agregar" tabindex="-1">

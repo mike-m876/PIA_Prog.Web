@@ -29,10 +29,6 @@ require_login();
                 <strong><?= htmlspecialchars($_SESSION['nom_usuario']) ?></strong><br>
                 <small>Matrícula:  <?= htmlspecialchars($_SESSION["matricula"]) ?></small>
             </div>
-            <!-- DERECHA -->
-            <button class="btn btn-light">
-                <i class="bi bi-key"></i> ¿Olvidaste tu contraseña?
-            </button>
         </div>
     </nav>
 
@@ -42,42 +38,7 @@ require_login();
             Subir Calificaciones
         </a>
     </div>
-
-    <!-- Modal Cambiar Contraseña -->
-    <div class="modal fade" id="modalContrasena" tabindex="-1" aria-labelledby="modalContrasenaLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form id="formCambiarContrasena">
-                    <div class="modal-header bg-dark text-white">
-                        <h5 class="modal-title" id="modalContrasenaLabel"><i class="bi bi-lock-fill me-2"></i>Cambiar
-                            Contraseña</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                            aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="actual" class="form-label">Contraseña Actual</label>
-                            <input type="password" class="form-control" id="actual" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nueva" class="form-label">Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="nueva" required minlength="12">
-                        </div>
-                        <div class="mb-3">
-                            <label for="confirmar" class="form-label">Confirmar Nueva Contraseña</label>
-                            <input type="password" class="form-control" id="confirmar" required minlength="12">
-                            <div class="invalid-feedback">Las contraseñas no coinciden.</div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-dark">Guardar Cambios</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="JS/psswrd.js"></script>
     <script src="JS/mn_mto.js"></script>

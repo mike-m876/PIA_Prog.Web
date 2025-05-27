@@ -84,16 +84,13 @@ $roles = get_roles($pdo);
                   <!-- INGRESO DE CONTRASEÑA-->
                   <div class="form-group mt-3 position-relative">
                     <label>Contraseña</label>
-                    <input type="password" placeholder="Ingrese su contraseña" class="form-control" name="psswd" id="psswd">
+                    <input type="password" placeholder="Ingrese su contraseña" class="form-control" name="psswd" id="psw">
                       <button type="button" class="btn position-absolute top-50 end-0 translate-middle-y me-2" onclick="togglePassword()" tabindex="-1" style="background: none; border: none;">
                         <i id="toggleIcon" class="bi bi-eye-fill"></i>
                       </button>
                   </div>
                   <?php check_login_errors(); ?>
                   <input type="submit" class="btn btn-primary mt-3" name="login_button">
-                  <button type="button" class="btn btn-link mt-2" data-bs-toggle="modal" data-bs-target="#modalContrasena">
-                      ¿Olvidaste o deseas cambiar tu contraseña?
-                  </button>
                 </form>
               </div>
               <div class="card-footer text-end"> 
@@ -101,40 +98,6 @@ $roles = get_roles($pdo);
             </div>
           </div>
         </div>
-      </div>
-              <!-- Modal Cambiar Contraseña -->
-      <div class="modal fade" id="modalContrasena" tabindex="-1" aria-labelledby="modalContrasenaLabel"
-          aria-hidden="true">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <form id="formCambiarContrasena">
-                      <div class="modal-header bg-primary text-white">
-                          <h5 class="modal-title" id="modalContrasenaLabel"><i class="bi bi-lock-fill me-2"></i>Cambiar Contraseña</h5>
-                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                              aria-label="Cerrar"></button>
-                      </div>
-                      <div class="modal-body">
-                          <div class="mb-3">
-                              <label for="actual" class="form-label">Contraseña Actual</label>
-                              <input type="password" class="form-control" id="actual" name="actual" required>
-                          </div>
-                          <div class="mb-3">
-                              <label for="nueva" class="form-label">Nueva Contraseña</label>
-                              <input type="password" class="form-control" id="nueva" name="nueva" required minlength="12">
-                          </div>
-                          <div class="mb-3">
-                              <label for="confirmar" class="form-label">Confirmar Nueva Contraseña</label>
-                              <input type="password" class="form-control" id="confirmar" name="confirmar" required minlength="12">
-                              <div class="invalid-feedback">Las contraseñas no coinciden.</div>
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                      </div>
-                  </form>
-              </div>
-          </div>
       </div>
               
     <script src="JS/psswrd.js"></script>
