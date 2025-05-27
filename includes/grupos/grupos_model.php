@@ -16,6 +16,7 @@ function get_grupo(PDO $pdo)
     JOIN ciclos_escolares c ON g.id_ciclo = c.id_ciclo
     JOIN turnos t ON g.id_turno = t.id_turno
     JOIN usuarios u ON g.id_maestro = u.id_usuario
+    WHERE g.activo = 1
     ORDER BY g.id_grupo DESC;";
 
     $stmt = $pdo->prepare($query);
@@ -75,8 +76,27 @@ function get_materias(PDO $pdo)
 //ACTUALIZACIÓN DE TABLAS
 function crear_grupo(PDO $pdo, int $id_nivel, int $id_aula, int $id_ciclo, int $id_turno, int $id_maestro)
 {
-    $query = "INSERT INTO grupo (id_nivel, id_aula, id_ciclo, id_turno, id_maestro) 
-              VALUES (:id_nivel, :id_aula, :id_ciclo, :id_turno, :id_maestro)";
+    $stmt = $pdo->prepare("
+        SELECT MAX(version) AS max_version
+        FROM grupo
+        WHERE id_nivel = :id_nivel
+          AND id_aula = :id_aula
+          AND id_ciclo = :id_ciclo
+          AND id_turno = :id_turno
+          AND id_maestro = :id_maestro
+    ");
+    $stmt->execute([
+        ':id_nivel' => $id_nivel,
+        ':id_aula' => $id_aula,
+        ':id_ciclo' => $id_ciclo,
+        ':id_turno' => $id_turno,
+        ':id_maestro' => $id_maestro
+    ]);
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $version = $row['max_version'] ? $row['max_version'] + 1 : 1;
+
+    $query = "INSERT INTO grupo (id_nivel, id_aula, id_ciclo, id_turno, id_maestro, version) 
+              VALUES (:id_nivel, :id_aula, :id_ciclo, :id_turno, :id_maestro, :version)";
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id_nivel', $id_nivel);
@@ -84,12 +104,12 @@ function crear_grupo(PDO $pdo, int $id_nivel, int $id_aula, int $id_ciclo, int $
     $stmt->bindParam(':id_ciclo', $id_ciclo);
     $stmt->bindParam(':id_turno', $id_turno);
     $stmt->bindParam(':id_maestro', $id_maestro);
+    $stmt->bindParam(':version', $version);
     $stmt->execute();
 
     $id_grupo = (int) $pdo->lastInsertId();
 
     $materias = get_materias($pdo);
-
     $queryInsertMateria = "INSERT INTO materia_grupo (id_grupo, id_materia) VALUES (:id_grupo, :id_materia)";
     $stmtInsertMateria = $pdo->prepare($queryInsertMateria);
 
@@ -98,7 +118,7 @@ function crear_grupo(PDO $pdo, int $id_nivel, int $id_aula, int $id_ciclo, int $
             ':id_grupo' => $id_grupo,
             ':id_materia' => $materia['id_materia']
         ]);
-}
+    }
 
     $queryAlumnos = "SELECT id_alumno FROM alumnos_grupo WHERE id_grupo = :id_grupo";
     $stmtAlumnos = $pdo->prepare($queryAlumnos);
@@ -106,7 +126,8 @@ function crear_grupo(PDO $pdo, int $id_nivel, int $id_aula, int $id_ciclo, int $
     $alumnos = $stmtAlumnos->fetchAll(PDO::FETCH_COLUMN);
 
     if (!empty($alumnos)) {
-        $queryInsertCalif = "INSERT IGNORE INTO calificaciones (id_alumno, id_grupo, id_materia) VALUES (:id_alumno, :id_grupo, :id_materia)";
+        $queryInsertCalif = "INSERT IGNORE INTO calificaciones (id_alumno, id_grupo, id_materia) 
+                             VALUES (:id_alumno, :id_grupo, :id_materia)";
         $stmtInsertCalif = $pdo->prepare($queryInsertCalif);
 
         foreach ($alumnos as $id_alumno) {
@@ -144,3 +165,15 @@ function edit_grupo(PDO $pdo, int $id_grupo, int $id_nivel, int $id_aula, int $i
     $stmt->execute();
 }
 
+function delete_grupo(PDO $pdo, int $id_grupo){
+    $update = $pdo->prepare("UPDATE grupo SET activo = 0 WHERE id_grupo = :id_grupo");
+    $update->execute([':id_grupo' => $id_grupo]);
+
+    $stmt1 = $pdo->prepare("DELETE FROM materia_grupo WHERE id_grupo = :id_grupo");
+    $stmt1->execute([':id_grupo' => $id_grupo]);
+
+    $stmt2 = $pdo->prepare("DELETE FROM calificaciones WHERE id_grupo = :id_grupo");
+    $stmt2->execute([':id_grupo' => $id_grupo]);
+
+    return true;
+}

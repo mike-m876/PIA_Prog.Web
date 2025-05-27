@@ -29,7 +29,7 @@ $maestros = get_maestro($pdo);
 </head>
 
 <body class="container mt-4">
-    <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] === 'DIRECTOR'): ?>
+    <?php if (isset($_SESSION['id_rol']) && $_SESSION['id_rol'] === 'DIRECTOR'): ?>
     <div class="mb-3">
         <a href="menu_admin.php" class="btn btn-secondary">
             <i class="bi bi-arrow-left-circle"></i> Volver al Menú de Director
@@ -143,7 +143,7 @@ $maestros = get_maestro($pdo);
                         <input type="hidden" name="grupo" id="edit_id_grupo" value="">
                         <div class="mb-3">
                             <label for="edit_nivel" class="form-label">Nivel</label>
-                            <select type="text" class="form-control" id="edit_id_nivel" name="nivel" required>
+                            <select type="text" class="form-control" id="edit_nivel" name="nivel" required>
                                 <option value="">Seleccionar nivel...</option>
                                 <?php foreach($niveles as $nivel): ?>
                                 <option value="<?= htmlspecialchars(($nivel['id_nivel'] ?? '')) ?>">
@@ -204,7 +204,6 @@ $maestros = get_maestro($pdo);
                             title="Editar lista de alumnos de este grupo">
                             <i class="bi bi-people-fill"></i> Editar Lista Alumnos
                             </a>
-                            </button>
                         </div>
                     </form>
                 </div>
@@ -212,18 +211,51 @@ $maestros = get_maestro($pdo);
         </div>
     </div>
 
+    <!-- Modal para Confirmar Eliminación -->
+    <div class="modal fade" id="modal_eliminar" tabindex="-1" aria-labelledby="modal_eliminar_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <form action="includes/grupos/grupos.php" method="POST">
+                <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="modal_eliminar_label">Confirmar Eliminación</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar este grupo? Esta acción no puede deshacerse.
+                <input type="hidden" name="grupo_eliminar" id="id_grupo_eliminar">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" name="delete_grupo" class="btn btn-danger">Eliminar</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        /*
+
         function fill_editar_grupo(id_grupo, id_nivel, id_aula, id_ciclo, id_turno, id_usuario){
             document.getElementById("edit_id_grupo").value = id_grupo;
-            document.getElementById("edit_id_nivel").value = id_nivel;
+            document.getElementById("edit_nivel").value = id_nivel;
             document.getElementById("edit_aula").value = id_aula;
             document.getElementById("edit_ciclo").value = id_ciclo;
             document.getElementById("edit_turno").value = id_turno;
             document.getElementById("edit_maestro").value = id_usuario;
-        } */
+        }
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const eliminarModal = document.getElementById('modal_eliminar');
+        eliminarModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const idGrupo = button.getAttribute('data-id');
+            document.getElementById('id_grupo_eliminar').value = idGrupo;
+        });
+    });
+</script>
 </body>
 
 </html>
