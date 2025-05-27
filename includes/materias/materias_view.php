@@ -3,7 +3,6 @@
 function new_row(array $materias){
     foreach($materias as $materia): ?>
     <tr>
-        <td><?= htmlspecialchars(strval($materia['id_materia'])) ?></td>
         <td><?= htmlspecialchars($materia['nombre']) ?></td>
         <td><?= htmlspecialchars($materia['desc_materia']) ?></td>
         <td>

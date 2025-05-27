@@ -24,7 +24,6 @@ function new_row_califs($alumnos) {
             <td><?= htmlspecialchars(strval($alumno['promedio'])) ?></td>
             <td><input type="number" name="parcial1[<?= $alumno['id_alumno'] ?>]" class="form-control"></td>
             <td><input type="number" name="parcial2[<?= $alumno['id_alumno'] ?>]" class="form-control"></td>
-            <td><?= htmlspecialchars($alumno['fecha']) ?></td>
         </tr>
     <?php endforeach;
 }

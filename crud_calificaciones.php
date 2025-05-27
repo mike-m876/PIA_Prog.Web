@@ -65,7 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_materia'], $_POST[
                 <th>Promedio</th>
                 <th>Parcial 1</th>
                 <th>Parcial 2</th>
-                <th>Fecha de Actualización</th>
               </tr>
             </thead>
             <tbody>

@@ -96,9 +96,9 @@ function crear_grupo(PDO $pdo, int $id_nivel, int $id_aula, int $id_ciclo, int $
     foreach ($materias as $materia) {
         $stmtInsertMateria->execute([
             ':id_grupo' => $id_grupo,
-            ':id_materia' => $materia
+            ':id_materia' => $materia['id_materia']
         ]);
-    }
+}
 
     $queryAlumnos = "SELECT id_alumno FROM alumnos_grupo WHERE id_grupo = :id_grupo";
     $stmtAlumnos = $pdo->prepare($queryAlumnos);
@@ -110,17 +110,17 @@ function crear_grupo(PDO $pdo, int $id_nivel, int $id_aula, int $id_ciclo, int $
         $stmtInsertCalif = $pdo->prepare($queryInsertCalif);
 
         foreach ($alumnos as $id_alumno) {
-            foreach ($materias as $id_materia) {
+            foreach ($materias as $materia) {
                 $stmtInsertCalif->execute([
                     ':id_alumno' => $id_alumno,
                     ':id_grupo' => $id_grupo,
-                    ':id_materia' => $id_materia
+                    ':id_materia' => $materia['id_materia']
                 ]);
             }
         }
     }
 
-    return $id_grupo; // Por si quieres usar el id después
+    return $id_grupo;
 }
 
 

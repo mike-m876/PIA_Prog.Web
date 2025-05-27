@@ -37,7 +37,6 @@ try {
     <table class="table table-bordered table-hover bg-white">
         <thead class="table-light">
             <tr>
-                <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Acciones</th>

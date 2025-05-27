@@ -28,8 +28,7 @@ function get_calificaciones($pdo, $id_materia, $id_grupo) {
                 CONCAT(u.nombres, ' ', u.apellido_pat, ' ', u.apellido_mat) AS nombre,
                 c.periodo1 as parcial1,
                 c.periodo2 as parcial2,
-                c.prom_final as promedio,
-                c.fecha_actualizacion as fecha
+                c.prom_final as promedio
             FROM calificaciones c
             JOIN usuarios u ON c.id_alumno = u.id_usuario
             WHERE c.id_materia = :id_materia AND c.id_grupo = :id_grupo;";
@@ -42,7 +41,7 @@ function get_calificaciones($pdo, $id_materia, $id_grupo) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function update_calificaciones($pdo, $id_alumno, $parcial1 = null, $parcial2 = null) {
+function update_calificaciones($pdo, $id_alumno, $id_materia, $id_grupo, $parcial1 = null, $parcial2 = null) {
     $parcial1 = ($parcial1 !== null && $parcial1 !== '') ? floatval($parcial1) : null;
     $parcial2 = ($parcial2 !== null && $parcial2 !== '') ? floatval($parcial2) : null;
 
@@ -50,9 +49,11 @@ function update_calificaciones($pdo, $id_alumno, $parcial1 = null, $parcial2 = n
         return;
     }
 
-    $query = "SELECT periodo1, periodo2 FROM calificaciones WHERE id_alumno = :id_alumno";
+    $query = "SELECT periodo1, periodo2 FROM calificaciones WHERE id_alumno = :id_alumno AND id_materia = :id_materia AND id_grupo = :id_grupo";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id_alumno', $id_alumno, PDO::PARAM_INT);
+    $stmt->bindParam(':id_materia', $id_materia, PDO::PARAM_INT);
+    $stmt->bindParam(':id_grupo', $id_grupo, PDO::PARAM_INT);
     $stmt->execute();
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -78,23 +79,25 @@ function update_calificaciones($pdo, $id_alumno, $parcial1 = null, $parcial2 = n
     } elseif ($nuevo_p2 !== null) {
         $promedio = $nuevo_p2;
     } else {
-        $promedio = null; 
+        $promedio = null;
     }
 
     if ($row) {
         $stmt_update = $pdo->prepare("
             UPDATE calificaciones 
             SET periodo1 = :p1, periodo2 = :p2, prom_final = :prom 
-            WHERE id_alumno = :id_alumno
+            WHERE id_alumno = :id_alumno AND id_materia = :id_materia AND id_grupo = :id_grupo
         ");
     } else {
         $stmt_update = $pdo->prepare("
-            INSERT INTO calificaciones (id_alumno, periodo1, periodo2, prom_final)
-            VALUES (:id_alumno, :p1, :p2, :prom)
+            INSERT INTO calificaciones (id_alumno, id_materia, id_grupo, periodo1, periodo2, prom_final)
+            VALUES (:id_alumno, :id_materia, :id_grupo, :p1, :p2, :prom)
         ");
     }
 
     $stmt_update->bindParam(':id_alumno', $id_alumno, PDO::PARAM_INT);
+    $stmt_update->bindParam(':id_materia', $id_materia, PDO::PARAM_INT);
+    $stmt_update->bindParam(':id_grupo', $id_grupo, PDO::PARAM_INT);
     $stmt_update->bindParam(':p1', $nuevo_p1);
     $stmt_update->bindParam(':p2', $nuevo_p2);
     $stmt_update->bindParam(':prom', $promedio);

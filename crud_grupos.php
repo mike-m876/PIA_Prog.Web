@@ -214,6 +214,7 @@ $maestros = get_maestro($pdo);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        /*
         function fill_editar_grupo(id_grupo, id_nivel, id_aula, id_ciclo, id_turno, id_usuario){
             document.getElementById("edit_id_grupo").value = id_grupo;
             document.getElementById("edit_id_nivel").value = id_nivel;
@@ -221,7 +222,7 @@ $maestros = get_maestro($pdo);
             document.getElementById("edit_ciclo").value = id_ciclo;
             document.getElementById("edit_turno").value = id_turno;
             document.getElementById("edit_maestro").value = id_usuario;
-        }
+        } */
     </script>
 </body>
 
